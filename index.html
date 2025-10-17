@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="so">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Care Source Africa — Shirkadda Caymiska Caafimaadka</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0284c7, #0ea5e9);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px) scale(1.02);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Navbar animation */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fade-in 0.3s ease-in-out;
+        }
+
+        /* FAQ toggle */
+        .faq-item h3 {
+            cursor: pointer;
+        }
+
+        .faq-item p {
+            display: none;
+        }
+
+        .faq-item.active p {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar -->
+    <header class="bg-white/70 backdrop-blur-lg shadow-md fixed top-0 w-full z-50 transition-all">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <!-- Logo -->
+            <a href="#home" class="flex items-center space-x-2">
+                <img src="https://images.unsplash.com/photo-1721329567375-204a9a451f9b?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGhlYWx0aCUyMGNhcmR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&q=60&w=600"
+                    alt="Logo" class="w-10 h-10 rounded-full">
+                <h1 class="text-2xl font-bold text-sky-700 tracking-tight">
+                    Care Source <span class="text-sky-500">Africa</span>
+                </h1>
+            </a>
+
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+                <a href="#home" class="hover:text-sky-600 transition">Home</a>
+                <a href="#about" class="hover:text-sky-600 transition">About</a>
+                <a href="#facilities" class="hover:text-sky-600 transition">Hospitals</a>
+                <a href="#plans" class="hover:text-sky-600 transition">Plans</a>
+                <a href="#faq" class="hover:text-sky-600 transition">FAQ</a>
+                <a href="#testimonials" class="hover:text-sky-600 transition">Testimonials</a>
+                <a href="#contact" class="hover:text-sky-600 transition">Contact</a>
+            </nav>
+
+            <!-- CTA Button -->
+            <a href="#plans"
+                class="hidden md:inline-block bg-gradient-to-r from-sky-600 to-sky-500 text-white px-5 py-2 rounded-xl font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all">
+                Get Insurance
+            </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-sky-700 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden flex flex-col items-center bg-white/95 backdrop-blur-md text-gray-800 font-medium md:hidden shadow-lg rounded-b-2xl animate-fade-in">
+            <a href="#home" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">Home</a>
+            <a href="#about" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">About</a>
+            <a href="#facilities" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">Hospitals</a>
+            <a href="#plans" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">Plans</a>
+            <a href="#faq" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">FAQ</a>
+            <a href="#testimonials" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">Testimonials</a>
+            <a href="#contact" class="py-3 w-full text-center hover:bg-sky-50 hover:text-sky-600 transition">Contact</a>
+            <a href="#plans"
+                class="my-3 w-[90%] text-center bg-gradient-to-r from-sky-600 to-sky-500 text-white py-2 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-all">
+                Get Insurance
+            </a>
+        </div>
+    </header>
+
+    <!-- JS for Mobile Toggle -->
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuBtn.classList.toggle('open');
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section id="home"
+        class="hero-bg text-white py-36 text-center bg-[url('https://plus.unsplash.com/premium_photo-1683120972279-87efe2ba252f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fHN5c3RlbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&q=60&w=600')]">
+        <div class="bg-black/40 py-24">
+            <div class="max-w-3xl mx-auto px-4" data-aos="fade-up">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span id="typedHero"></span>
+                </h2>
+                <p class="text-lg opacity-90 mb-8">Caymis caafimaad oo casri ah, lagu kalsoonaan karo, oo laga
+                    hirgeliyey Muqdisho, Soomaaliya.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfLr6xGkf4GzLXN_UhjCACpdxFAQ_lgo6uYjxHf92QZM3wB2w/viewform?pli=1" target="_blank"
+                    class="bg-white text-sky-700 px-8 py-3 rounded-xl font-semibold hover:bg-sky-100 hover:scale-105 transition-all shadow-lg">
+                    📝 Apply for a Job
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-3xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    <b>Care Source Africa</b> waa shirkad Soomaaliyeed oo bixisa caymis caafimaad casri ah oo la awoodi
+                    karo.
+                    Waxaan ku saleysan nahay magaalada <b>Muqdisho, Soomaaliya</b>, waxaana ujeeddadeennu tahay in aan
+                    bulshada siino adeeg caafimaad oo ammaan ah, degdeg ah, iyo raqiis ah.
+                </p>
+                <p class="text-gray-700">Waxaan la shaqeynaa isbitaallo iyo xarumo caafimaad oo casri ah, oo leh qalab
+                    caafimaad oo heer caalami ah.</p>
+            </div>
+            <div data-aos="fade-left">
+                <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGhvc3BpdGFsfGVufDB8fDB8fHww&auto=format&fit=crop&q=60&w=600"
+                    alt="Care Source Africa Hospital" class="rounded-2xl shadow-lg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section id="facilities" class="py-20 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga ah</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in">
+                    <img src="https://media.istockphoto.com/id/2164892099/photo/doctors-in-clinic-looking-at-brain-mri-scan.webp?a=1&b=1&s=612x612&w=0&k=20&c=EPdIlx9JVMSaxsQLI6fhaiKqm_abuYGDQvhdwI1SF_A="
+                        alt="MRI Machine" class="rounded-xl mb-4 h-56 w-full object-cover">
+                    <h3 class="text-xl font-semibold text-sky-700">MRI & Scanning Technology</h3>
+                    <p class="text-gray-600">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in" data-aos-delay="150">
+                    <img src="https://media.istockphoto.com/id/1295773617/photo/physical-therapist-room-hospital.webp?a=1&b=1&s=612x612&w=0&k=20&c=_tI-bEMSDNVLA7EuQyHZXG2Z_mJgJSdM9n7G17TKtYw="
+                        alt="Modern Hospital" class="rounded-xl mb-4 h-56 w-full object-cover">
+                    <h3 class="text-xl font-semibold text-sky-700">Isbitaallo Casri ah</h3>
+                    <p class="text-gray-600">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer caalami
+                        ah.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=870"
+                        alt="Lab Equipment" class="rounded-xl mb-4 h-56 w-full object-cover">
+                    <h3 class="text-xl font-semibold text-sky-700">Qalab Shaybaar Casri ah</h3>
+                    <p class="text-gray-600">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-sky-700 mb-12" data-aos="fade-up">Qorshayaasha Caymiska</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Bajaaj Drivers -->
+                <div class="bg-white p-6 rounded-2xl shadow card-hover border border-gray-200" data-aos="flip-left">
+                    <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Darawalada Bajaaj</h3>
+                    <p class="text-center text-gray-600 mb-4">Laga bilaabo <span
+                            class="font-bold text-sky-600">$10</span> bishii</p>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>✔ Daryeel Degdeg ah</li>
+                        <li>✔ Daawaynta shilalka</li>
+                        <li>✖ Ilkaha & Aragga</li>
+                    </ul>
+                    <a href="#"
+                        class="block text-center bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700">Doora Qorshahan</a>
+                </div>
+
+                <!-- Family Plan -->
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-sky-600 card-hover" data-aos="flip-left"
+                    data-aos-delay="150">
+                    <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Qoyska</h3>
+                    <p class="text-center text-gray-600 mb-4">Laga bilaabo <span
+                            class="font-bold text-sky-600">$20</span> bishii</p>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>✔ Daryeelka Qoyska oo Dhameystiran</li>
+                        <li>✔ Ilkaha & Aragga</li>
+                        <li>✔ Baaritaan Sannadle ah</li>
+                    </ul>
+                    <a href="#"
+                        class="block text-center bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700">Doora Qorshahan</a>
+                </div>
+
+                <!-- Premium Plan -->
+                <div class="bg-white p-6 rounded-2xl shadow card-hover" data-aos="flip-left" data-aos-delay="300">
+                    <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Heerka Sare</h3>
+                    <p class="text-center text-gray-600 mb-4">Laga bilaabo <span
+                            class="font-bold text-sky-600">$75</span> bishii</p>
+                    <ul class="text-gray-600 mb-4 space-y-2">
+                        <li>✔ Caymiska Caafimaadka oo Dhameystiran</li>
+                        <li>✔ Faa’iidooyinka Qoyska</li>
+                        <li>✔ Helitaan Caalami ah</li>
+                    </ul>
+                    <a href="#"
+                        class="block text-center bg-sky-600 text-white py-2 rounded-lg hover:bg-sky-700">Doora Qorshahan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-sky-700 mb-12">Su'aalaha Badanaa La Weydiiyo</h2>
+            <div class="space-y-6 text-left">
+                <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+                    <h3 class="font-semibold text-sky-700">Sideen ku diiwaangashan karaa Caymiska?</h3>
+                    <p class="text-gray-600 mt-2">Waxaad si fudud ugu buuxin kartaa foomka online ka ah ee boggan.</p>
+                </div>
+                <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+                    <h3 class="font-semibold text-sky-700">Maxay tahay daryeelka la daboolayo?</h3>
+                    <p class="text-gray-600 mt-2">Caymiska wuxuu daboolayaa adeegyada caafimaad ee degdegga ah, baaritaannada caafimaadka, iyo qorshooyinka qoyska.</p>
+                </div>
+                <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+                    <h3 class="font-semibold text-sky-700">Sidee ayaan usheegan karaa dhibaato?</h3>
+                    <p class="text-gray-600 mt-2">Waxaad la xiriiri kartaa kooxda Care Source Africa via email ama telefoonka si loo bilaabo habka sheegashada.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-3xl font-bold text-sky-700 mb-12">Maxay Bukaannadu Ka Yiraahdeen</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 mb-4">“Adeeg caafimaad oo heer sare ah, shaqaale naxariis leh!”</p>
+                    <h4 class="font-semibold text-sky-700">Amina H.</h4>
+                    <p class="text-gray-400 text-sm">Muqdisho</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 mb-4">“Caymiska caafimaad ee Care Source Africa waa mid la isku halleyn karo.”</p>
+                    <h4 class="font-semibold text-sky-700">Abdi R.</h4>
+                    <p class="text-gray-400 text-sm">Hodan, Muqdisho</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <p class="text-gray-600 mb-4">“Xarumo caafimaad casri ah iyo daawayn degdeg ah.”</p>
+                    <h4 class="font-semibold text-sky-700">Fatima S.</h4>
+                    <p class="text-gray-400 text-sm">Wadajir</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="relative py-24 bg-gradient-to-br from-sky-50 to-sky-100 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 text-center" data-aos="fade-up">
+
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-bold text-sky-700 mb-6 flex items-center justify-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 11c0 1.104-.896 2-2 2s-2-.896-2-2 .896-2 2-2 2 .896 2 2zM4 6v12a2 2 0 002 2h12a2 2 0 002-2V6m-7 10h2m-2-4h2" />
+                </svg>
+                Nala Soo Xiriir
+            </h2>
+            <p class="text-gray-600 mb-12 max-w-3xl mx-auto text-lg">
+                Waxaad nala soo xiriiri kartaa wakhti kasta — kooxda <b>Care Source Africa</b> waxay diyaar u tahay inay kaa caawiso adeegyada caymiska caafimaadka ee Soomaaliya.
+            </p>
+
+            <!-- Contact Cards -->
+            <div class="grid md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 border border-sky-100 hover:border-sky-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-sky-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8m-9 13V4" />
+                    </svg>
+                    <p class="text-xl font-semibold text-gray-800 mb-1">info@caresourceafrica.com</p>
+                    <p class="text-sm text-gray-500">Email Support 24/7</p>
+                </div>
+                <div class="bg-white rounded-3xl shadow-xl p-8 hover:shadow-2xl transition-all duration-300 border border-sky-100 hover:border-sky-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-sky-600 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M2 5.5A2.5 2.5 0 014.5 3h2A2.5 2.5 0 019 5.5v2A2.5 2.5 0 016.5 10H4.5A2.5 2.5 0 012 7.5v-2zm13 0A2.5 2.5 0 0117.5 3h2A2.5 2.5 0 0122 5.5v2A2.5 2.5 0 0119.5 10h-2A2.5 2.5 0 0115 7.5v-2zm-13 9A2.5 2.5 0 014.5 13h2A2.5 2.5 0 019 15.5v2A2.5 2.5 0 016.5 20H4.5A2.5 2.5 0 012 17.5v-2zm13 0A2.5 2.5 0 0117.5 13h2A2.5 2.5 0 0122 15.5v2A2.5 2.5 0 0119.5 20h-2A2.5 2.5 0 0115 17.5v-2z" />
+                    </svg>
+                    <p class="text-xl font-semibold text-gray-800 mb-1">+252 612 194 449</p>
+                    <p class="text-sm text-gray-500">Wac ama WhatsApp</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form class="bg-white rounded-3xl p-10 shadow-2xl border border-sky-100 hover:border-sky-300 transition-all max-w-3xl mx-auto mb-16">
+                <h3 class="text-2xl font-bold text-sky-700 mb-6">Fariin noogu soo dir</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <input type="text" placeholder="Magacaaga" class="p-4 border rounded-lg focus:ring-2 focus:ring-sky-400 outline-none">
+                    <input type="email" placeholder="Email-kaaga" class="p-4 border rounded-lg focus:ring-2 focus:ring-sky-400 outline-none">
+                    <textarea placeholder="Fariintaada..." class="md:col-span-2 p-4 border rounded-lg h-36 focus:ring-2 focus:ring-sky-400 outline-none"></textarea>
+                </div>
+                <button class="mt-6 w-full bg-gradient-to-r from-sky-600 to-sky-500 text-white py-4 rounded-2xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all font-semibold text-lg">
+                    Dir Fariinta
+                </button>
+            </form>
+
+            <!-- Google Map -->
+            <div class="rounded-3xl overflow-hidden shadow-2xl border border-sky-200">
+                <iframe src="https://www.google.com/maps?q=Hodan%2C%20Mogadishu%2C%20Somalia&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-sky-700 text-white py-6 text-center">
+        <p>© <span id="year"></span> Care Source Africa — Caafimaad & Aaminaad Soomaaliyeed | Muqdisho, Soomaaliya</p>
+    </footer>
+
+    <!-- JS -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        new Typed('#typedHero', {
+            strings: ['Caymis Caafimaad Casri ah', 'Reliable • Affordable • Digital'],
+            typeSpeed: 60,
+            backSpeed: 40,
+            loop: true
+        });
+
+        // FAQ toggle
+        document.querySelectorAll('.faq-item h3').forEach(item => {
+            item.addEventListener('click', () => {
+                item.parentElement.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
