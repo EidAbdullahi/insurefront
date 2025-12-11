@@ -17,18 +17,17 @@
 
   <style>
     body {
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
-        Arial;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
 
     .card-hover:hover {
-      transform: translateY(-6px) scale(1.02);
-      transition: all 0.28s ease;
-      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      transform: translateY(-6px) scale(1.03);
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 25px rgba(2, 6, 23, 0.15);
     }
 
     .animate-fade-in {
-      animation: fade-in 0.28s ease-in-out;
+      animation: fade-in 0.3s ease-in-out;
     }
 
     @keyframes fade-in {
@@ -43,7 +42,7 @@
       }
     }
 
-    /* small helper for maximum hero height on mobile */
+    /* hero mobile min height */
     .hero-min {
       min-height: 60vh;
     }
@@ -54,7 +53,7 @@
 
   <!-- NAV -->
   <header
-    class="fixed top-0 left-0 right-0 z-50 bg-white/70 backdrop-blur-md dark:bg-gray-800/70 border-b border-gray-200 dark:border-gray-700">
+    class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
     <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
       <a href="#home" class="flex items-center gap-3">
         <img src="https://via.placeholder.com/48" alt="logo" class="w-10 h-10 rounded-full object-cover" />
@@ -65,12 +64,12 @@
       </a>
 
       <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a class="nav-link hover:text-sky-600" href="#home">Home</a>
-        <a class="nav-link hover:text-sky-600" href="#about">About</a>
-        <a class="nav-link hover:text-sky-600" href="#facilities">Hospitals</a>
-        <a class="nav-link hover:text-sky-600" href="#plans">Plans</a>
-        <a class="nav-link hover:text-sky-600" href="#faq">FAQ</a>
-        <a class="nav-link hover:text-sky-600" href="#contact">Contact</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#home">Home</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#about">About</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#facilities">Hospitals</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#plans">Plans</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#faq">FAQ</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#contact">Contact</a>
       </nav>
 
       <div class="flex items-center gap-3">
@@ -79,17 +78,17 @@
           <option value="en">EN</option>
         </select>
 
-        <button id="darkToggle" aria-label="Toggle dark" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <button id="darkToggle" aria-label="Toggle dark" class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
           🌙
         </button>
 
         <a href="#plans"
-          class="hidden md:inline-block bg-gradient-to-r from-sky-600 to-sky-500 text-white px-4 py-2 rounded-lg font-semibold shadow hover:scale-105">
+          class="hidden md:inline-block bg-gradient-to-r from-sky-600 to-sky-500 text-white px-4 py-2 rounded-lg font-semibold shadow hover:scale-105 transition">
           Get Insurance
         </a>
 
         <!-- mobile menu button -->
-        <button id="mobileBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700">
+        <button id="mobileBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16M4 18h16" />
@@ -101,60 +100,54 @@
     <!-- mobile menu -->
     <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-gray-800/95 border-t border-gray-200 dark:border-gray-700">
       <div class="flex flex-col text-center py-3">
-        <a href="#home" class="py-2">Home</a>
-        <a href="#about" class="py-2">About</a>
-        <a href="#facilities" class="py-2">Hospitals</a>
-        <a href="#plans" class="py-2">Plans</a>
-        <a href="#faq" class="py-2">FAQ</a>
-        <a href="#contact" class="py-2">Contact</a>
-        <a href="#plans" class="mt-2 mx-6 bg-sky-600 text-white py-2 rounded-lg">Get Insurance</a>
+        <a href="#home" class="py-2 hover:text-sky-600 transition">Home</a>
+        <a href="#about" class="py-2 hover:text-sky-600 transition">About</a>
+        <a href="#facilities" class="py-2 hover:text-sky-600 transition">Hospitals</a>
+        <a href="#plans" class="py-2 hover:text-sky-600 transition">Plans</a>
+        <a href="#faq" class="py-2 hover:text-sky-600 transition">FAQ</a>
+        <a href="#contact" class="py-2 hover:text-sky-600 transition">Contact</a>
+        <a href="#plans" class="mt-2 mx-6 bg-gradient-to-r from-sky-600 to-sky-500 text-white py-2 rounded-lg shadow hover:scale-105 transition">Get Insurance</a>
       </div>
     </div>
   </header>
 
-<section id="home" class="relative w-full flex flex-col md:flex-row items-center justify-center min-h-screen md:min-h-screen">
-  <!-- Hero Image -->
-  <div class="w-full md:w-1/2 h-[60vh] md:h-full relative">
-    <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg"
-         alt="Hero"
-         class="w-full h-full object-contain object-center"/>
-    <div class="absolute inset-0 bg-black/40 md:hidden"></div> <!-- overlay on mobile -->
-  </div>
-
-  <!-- Content -->
-  <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left text-white">
-    <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-snug">
-      <span id="typedHero" class="block"></span>
-    </h1>
-    <p id="heroSubtitle" class="text-lg md:text-xl opacity-90 mb-6">
-      Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.
-    </p>
-    <div class="flex flex-wrap justify-center md:justify-start gap-3">
-      <a href="#plans"
-         class="bg-gradient-to-r from-sky-500 to-sky-600 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">
-        Get Insurance
-      </a>
-      <button onclick="openRegister()"
-         class="bg-white/90 text-sky-700 px-5 py-3 rounded-full font-semibold hover:scale-105 transition">
-        Register
-      </button>
+  <!-- HERO -->
+  <section id="home" class="relative flex flex-col md:flex-row items-center justify-center min-h-screen hero-min bg-gradient-to-br from-sky-500 to-sky-600 text-white">
+    <!-- Hero Image -->
+    <div class="w-full md:w-1/2 h-[60vh] md:h-full relative overflow-hidden">
+      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg"
+        alt="Hero" class="w-full h-full object-cover rounded-lg shadow-lg" />
+      <div class="absolute inset-0 bg-black/40 md:hidden"></div>
     </div>
-    <!-- Optional counters under hero -->
-    <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl">
-      <!-- counters here -->
-    </div>
-  </div>
-</section>
 
+    <!-- Hero Content -->
+    <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+        <span id="typedHero" class="block"></span>
+      </h1>
+      <p id="heroSubtitle" class="text-lg md:text-xl opacity-90 mb-6">
+        Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.
+      </p>
+      <div class="flex flex-wrap justify-center md:justify-start gap-4">
+        <a href="#plans"
+          class="bg-gradient-to-r from-green-400 to-green-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">
+          Get Insurance
+        </a>
+        <button onclick="openRegister()"
+          class="bg-white/90 text-sky-700 px-5 py-3 rounded-full font-semibold hover:scale-105 transition shadow-md">
+          Register
+        </button>
+      </div>
+    </div>
+  </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <div data-aos="fade-right">
-        <h2 id="aboutTitle" class="text-3xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
-        <p class="text-gray-700 mb-3">Care Source Africa waa shirkad Soomaaliyeed oo bixisa caymis caafimaad oo la awoodi
-          karo — adeegyada ugu wanaagsan ee caafimaadka bulshada Muqdisho iyo hareeraheeda.</p>
-        <p class="text-gray-700">Waxaan la shaqeynaa isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya adeegyo heer caalami.</p>
+        <h2 id="aboutTitle" class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-3">Care Source Africa waa shirkad Soomaaliyeed oo bixisa caymis caafimaad oo la awoodi karo — adeegyada ugu wanaagsan ee caafimaadka bulshada Muqdisho iyo hareeraheeda.</p>
+        <p class="text-gray-700 dark:text-gray-300">Waxaan la shaqeynaa isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya adeegyo heer caalami.</p>
       </div>
       <div data-aos="fade-left">
         <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?auto=format&fit=crop&q=80&w=900"
@@ -164,29 +157,29 @@
   </section>
 
   <!-- FACILITIES -->
-  <section id="facilities" class="py-20 bg-gray-100">
+  <section id="facilities" class="py-20 bg-white dark:bg-gray-800">
     <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga ah</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in">
-          <img src="https://plus.unsplash.com/premium_photo-1682130157004-057c137d96d5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aG9zcGl0YWx8ZW58MHx8MHx8fDA%3D"
+      <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga ah</h2>
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in">
+          <img src="https://plus.unsplash.com/premium_photo-1682130157004-057c137d96d5?w=500&auto=format&fit=crop&q=60"
             alt="MRI" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700">MRI & Scanning Technology</h3>
-          <p class="text-gray-600">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">MRI & Scanning Technology</h3>
+          <p class="text-gray-600 dark:text-gray-300">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in" data-aos-delay="120">
-          <img src="https://images.unsplash.com/photo-1563233269-7e86880558a7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDU5fHx8ZW58MHx8fHx8"
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="120">
+          <img src="https://images.unsplash.com/photo-1563233269-7e86880558a7?w=500&auto=format&fit=crop&q=60"
             alt="Hospital" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700">Isbitaallo Casri ah</h3>
-          <p class="text-gray-600">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer caalami ah.</p>
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">Isbitaallo Casri ah</h3>
+          <p class="text-gray-600 dark:text-gray-300">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer caalami ah.</p>
         </div>
 
-        <div class="bg-white rounded-2xl p-4 shadow card-hover" data-aos="zoom-in" data-aos-delay="240">
-          <img src="https://media.istockphoto.com/id/925425730/photo/close-up-shot-of-a-monitor-with-ekg-data-male-athlete-runs-on-a-treadmill-with-electrodes.webp?a=1&b=1&s=612x612&w=0&k=20&c=KUKKu8B63L87G1Jh-BbBqMDLgbeiPXheCfteR7skUQw="
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="240">
+          <img src="https://media.istockphoto.com/id/925425730/photo/close-up-shot-of-a-monitor-with-ekg-data-male-athlete-runs-on-a-treadmill-with-electrodes.webp"
             alt="Lab" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700">Qalab Shaybaar Casri ah</h3>
-          <p class="text-gray-600">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">Qalab Shaybaar Casri ah</h3>
+          <p class="text-gray-600 dark:text-gray-300">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
         </div>
       </div>
     </div>
@@ -400,162 +393,162 @@
     </div>
   </div>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    // initialize AOS
-    AOS.init({ duration: 900, once: true });
+  <!-- Modern Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // ---------- Initialize Libraries ----------
+  AOS.init({ duration: 900, once: true });
 
-    // typed hero
-    new Typed('#typedHero', {
-      strings: ['Caymis Caafimaad Casri ah', 'Reliable • Affordable • Digital'],
-      typeSpeed: 60,
-      backSpeed: 40,
-      loop: true
-    });
+  new Typed('#typedHero', {
+    strings: ['Caymis Caafimaad Casri ah', 'Reliable • Affordable • Digital'],
+    typeSpeed: 60,
+    backSpeed: 40,
+    loop: true
+  });
 
-    // year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+  // ---------- Helpers ----------
+  const setYear = () => {
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+  };
+  setYear();
 
-    // Mobile menu toggle
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  const toggleDisplay = (el) => el.style.display = el.style.display === 'block' ? 'none' : 'block';
 
-    // Dark mode toggle
-    const darkToggle = document.getElementById('darkToggle');
-    darkToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      darkToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
-    });
+  // ---------- Mobile Menu ----------
+  const mobileBtn = document.getElementById('mobileBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  mobileBtn?.addEventListener('click', () => mobileMenu?.classList.toggle('hidden'));
 
-    // Animated counters
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(c => {
-      const update = () => {
-        const target = +c.dataset.target;
-        const current = +c.textContent;
-        const inc = Math.ceil(target / 120);
-        if (current < target) {
-          c.textContent = Math.min(current + inc, target);
-          requestAnimationFrame(update);
-        } else {
-          c.textContent = target;
-        }
-      };
-      update();
-    });
+  // ---------- Dark Mode ----------
+  const darkToggle = document.getElementById('darkToggle');
+  darkToggle?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('dark');
+    darkToggle.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+  });
 
-    // FAQ toggles
-    document.querySelectorAll('.faq-item h3').forEach(h => {
-      h.addEventListener('click', () => {
-        h.parentElement.classList.toggle('active');
-        // simple slide effect
-        const p = h.nextElementSibling;
-        if (!p) return;
-        if (p.style.display === 'block') p.style.display = 'none'; else p.style.display = 'block';
-      });
-    });
-
-    // Testimonials carousel (simple)
-    const track = document.getElementById('testimonialTrack');
-    const nextTest = document.getElementById('nextTest');
-    const prevTest = document.getElementById('prevTest');
-    let tIndex = 0;
-
-    const updateTrack = () => {
-      const slides = track.children;
-      const width = track.clientWidth;
-      // for responsive: show as a scroll by width
-      const offset = tIndex * width;
-      track.style.transform = `translateX(-${offset}px)`;
-      track.style.transition = 'transform 400ms';
-    };
-
-    nextTest.addEventListener('click', () => {
-      tIndex = Math.min(tIndex + 1, track.children.length - 1);
-      updateTrack();
-    });
-    prevTest.addEventListener('click', () => {
-      tIndex = Math.max(tIndex - 1, 0);
-      updateTrack();
-    });
-
-    // Auto-advance testimonials (every 5s)
-    setInterval(() => {
-      tIndex = (tIndex + 1) % track.children.length;
-      updateTrack();
-    }, 5000);
-
-    // Smooth nav links
-    document.querySelectorAll('a.nav-link, #mobileMenu a').forEach(a => {
-      a.addEventListener('click', (e) => {
-        // allow external or anchor links
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        e.preventDefault();
-        document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
-        // close mobile if open
-        if (!mobileMenu.classList.contains('hidden')) mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Contact form handler (mock)
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you — your message has been sent (demo).');
-      contactForm.reset();
-    });
-
-    // Register modal handlers
-    const registerModal = document.getElementById('registerModal');
-    function openRegister() {
-      registerModal.classList.remove('hidden');
-    }
-    function closeRegister() {
-      registerModal.classList.add('hidden');
-    }
-    document.getElementById('registerForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Thank you — registration received (demo).');
-      closeRegister();
-    });
-
-    // Language switch (simple text swap)
-    const langSwitch = document.getElementById('langSwitch');
-    const translations = {
-      en: {
-        heroSubtitle: 'Modern, reliable health insurance — Mogadishu.',
-        aboutTitle: 'About Care Source Africa',
-        getInsurance: 'Get Insurance',
-        plansTitle: 'Insurance Plans',
-      },
-      so: {
-        heroSubtitle: 'Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.',
-        aboutTitle: 'Ku saabsan Care Source Africa',
-        getInsurance: 'Get Insurance',
-        plansTitle: 'Qorshayaasha Caymiska',
+  // ---------- Animated Counters ----------
+  document.querySelectorAll('.counter').forEach(counter => {
+    const updateCounter = () => {
+      const target = +counter.dataset.target;
+      const current = +counter.textContent;
+      const increment = Math.ceil(target / 120);
+      if (current < target) {
+        counter.textContent = Math.min(current + increment, target);
+        requestAnimationFrame(updateCounter);
+      } else {
+        counter.textContent = target;
       }
     };
+    updateCounter();
+  });
 
-    function applyLang(lang) {
-      document.getElementById('heroSubtitle').textContent = translations[lang].heroSubtitle;
-      document.getElementById('aboutTitle').textContent = translations[lang].aboutTitle;
-      // other translations can be added similarly
-    }
-
-    // init language
-    if (langSwitch) {
-      langSwitch.addEventListener('change', (e) => applyLang(e.target.value));
-      applyLang(langSwitch.value || 'so');
-    }
-
-    // window resize: ensure testimonial transform recalculated
-    window.addEventListener('resize', () => {
-      updateTrack();
+  // ---------- FAQ Toggle ----------
+  document.querySelectorAll('.faq-item h3').forEach(h => {
+    h.addEventListener('click', () => {
+      h.parentElement.classList.toggle('active');
+      const p = h.nextElementSibling;
+      if (p) toggleDisplay(p);
     });
-  </script>
+  });
+
+  // ---------- Testimonials Carousel ----------
+  const track = document.getElementById('testimonialTrack');
+  const nextBtn = document.getElementById('nextTest');
+  const prevBtn = document.getElementById('prevTest');
+  let tIndex = 0;
+
+  const updateTrack = () => {
+    if (!track) return;
+    const slides = track.children;
+    if (!slides.length) return;
+    const width = track.clientWidth;
+    track.style.transform = `translateX(-${tIndex * width}px)`;
+    track.style.transition = 'transform 400ms';
+  };
+
+  nextBtn?.addEventListener('click', () => {
+    if (track) tIndex = Math.min(tIndex + 1, track.children.length - 1);
+    updateTrack();
+  });
+
+  prevBtn?.addEventListener('click', () => {
+    if (track) tIndex = Math.max(tIndex - 1, 0);
+    updateTrack();
+  });
+
+  setInterval(() => {
+    if (track) {
+      tIndex = (tIndex + 1) % track.children.length;
+      updateTrack();
+    }
+  }, 5000);
+
+  window.addEventListener('resize', updateTrack);
+
+  // ---------- Smooth Scroll ----------
+  document.querySelectorAll('a.nav-link, #mobileMenu a').forEach(link => {
+    link.addEventListener('click', e => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+
+  // ---------- Contact Form (Demo) ----------
+  const contactForm = document.getElementById('contactForm');
+  contactForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you — your message has been sent (demo).');
+    contactForm.reset();
+  });
+
+  // ---------- Register Modal ----------
+  const registerModal = document.getElementById('registerModal');
+  const openRegister = () => registerModal?.classList.remove('hidden');
+  const closeRegister = () => registerModal?.classList.add('hidden');
+
+  const registerForm = document.getElementById('registerForm');
+  registerForm?.addEventListener('submit', e => {
+    e.preventDefault();
+    alert('Thank you — registration received (demo).');
+    closeRegister();
+  });
+
+  // ---------- Language Switch ----------
+  const langSwitch = document.getElementById('langSwitch');
+  const translations = {
+    en: {
+      heroSubtitle: 'Modern, reliable health insurance — Mogadishu.',
+      aboutTitle: 'About Care Source Africa',
+      getInsurance: 'Get Insurance',
+      plansTitle: 'Insurance Plans',
+    },
+    so: {
+      heroSubtitle: 'Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.',
+      aboutTitle: 'Ku saabsan Care Source Africa',
+      getInsurance: 'Get Insurance',
+      plansTitle: 'Qorshayaasha Caymiska',
+    }
+  };
+
+  const applyLang = (lang) => {
+    const t = translations[lang] || translations['so'];
+    document.getElementById('heroSubtitle').textContent = t.heroSubtitle;
+    document.getElementById('aboutTitle').textContent = t.aboutTitle;
+    // add more translations here
+  };
+
+  if (langSwitch) {
+    langSwitch.addEventListener('change', e => applyLang(e.target.value));
+    applyLang(langSwitch.value || 'so');
+  }
+
+</script>
+
 </body>
 
 </html>
