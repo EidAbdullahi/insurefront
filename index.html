@@ -2,487 +2,671 @@
 <html lang="so" class="scroll-smooth">
 
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Care Source Africa — Shirkadda Caymiska Caafimaadka</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Care Source Africa — Shirkadda Caymiska Caafimaadka</title>
 
-<!-- Tailwind CDN -->
-<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- AOS -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
-<!-- Typed.js -->
-<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- Typed.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
 
-<style>
-body {
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
+  <style>
+    /* Base font */
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
 
-.card-hover:hover {
-  transform: translateY(-6px) scale(1.03);
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 25px rgba(2, 6, 23, 0.15);
-}
+    /* Card hover */
+    .card-hover:hover {
+      transform: translateY(-6px) scale(1.03);
+      transition: all 0.28s ease;
+      box-shadow: 0 10px 25px rgba(2, 6, 23, 0.12);
+    }
 
-.animate-fade-in {
-  animation: fade-in 0.3s ease-in-out;
-}
+    /* Mobile menu collapsed */
+    #mobileMenu {
+      max-height: 0;
+      overflow: hidden;
+    }
 
-@keyframes fade-in {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+    /* small fade-in */
+    .animate-fade-in {
+      animation: fade-in 0.28s ease-in-out;
+    }
 
-.hero-min { min-height: 60vh; }
-</style>
+    @keyframes fade-in {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-min {
+      min-height: 60vh;
+    }
+
+    /* Logo entrance animation */
+    @keyframes logoUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    .animate-logo {
+      animation: logoUp .6s ease-out forwards;
+    }
+
+    /* Modal: simple focus trap hint */
+    .sr-only-focusable:focus {
+      outline: 3px solid rgba(99, 102, 241, 0.6);
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
 
-<!-- ============================================= -->
-<!-- NAVBAR -->
-<!-- ============================================= -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-    <a href="#home" class="flex items-center gap-3">
-      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765531775/cares_lsjddz.jpg"
-           alt="logo" class="w-10 h-10 rounded-full object-cover" />
-      <div>
-        <div class="font-bold text-sky-700 dark:text-sky-300">Care Source <span class="text-sky-500">Africa</span></div>
-        <div class="text-xs text-gray-500 dark:text-gray-300 -mt-0.5">Caymis & Caafimaad</div>
-      </div>
-    </a>
-
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a class="nav-link hover:text-sky-600 transition" href="#home">Home</a>
-      <a class="nav-link hover:text-sky-600 transition" href="#about">About</a>
-      <a class="nav-link hover:text-sky-600 transition" href="#facilities">Hospitals</a>
-      <a class="nav-link hover:text-sky-600 transition" href="#plans">Plans</a>
-      <a class="nav-link hover:text-sky-600 transition" href="#faq">FAQ</a>
-      <a class="nav-link hover:text-sky-600 transition" href="#contact">Contact</a>
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <select id="langSwitch" class="hidden md:inline-block border rounded px-2 py-1 text-sm bg-white dark:bg-gray-800">
-        <option value="so">SO</option>
-        <option value="en">EN</option>
-      </select>
-
-      <button id="darkToggle" aria-label="Toggle dark"
-        class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">🌙</button>
-
-      <a href="#plans"
-        class="hidden md:inline-block bg-gradient-to-r from-sky-600 to-sky-500 text-white px-4 py-2 rounded-lg font-semibold shadow hover:scale-105 transition">
-        Get Insurance
+  <!-- NAVBAR -->
+  <header
+    class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md dark:bg-gray-800/80 border-b border-gray-200 dark:border-gray-700">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
+      <!-- Logo + Brand -->
+      <a id="brandLink" href="#home" class="flex items-center gap-3">
+        <img id="brandLogo" src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765531775/cares_lsjddz.jpg"
+          alt="Care Source Africa logo"
+          class="w-10 h-10 rounded-full object-cover transform opacity-0 translate-y-5 animate-logo" />
+        <div>
+          <div class="font-bold text-sky-700 dark:text-sky-300">Care Source <span
+              class="text-sky-500">Africa</span></div>
+          <div class="text-xs text-gray-500 dark:text-gray-300 -mt-0.5">Caymis & Caafimaad</div>
+        </div>
       </a>
 
-      <button id="mobileBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
+      <!-- Desktop nav -->
+      <nav class="hidden md:flex items-center gap-6 text-sm font-medium" aria-label="Primary">
+        <a class="nav-link hover:text-sky-600 transition" href="#home">Home</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#about">About</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#facilities">Hospitals</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#plans">Plans</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#faq">FAQ</a>
+        <a class="nav-link hover:text-sky-600 transition" href="#contact">Contact</a>
+      </nav>
 
-  <!-- MOBILE MENU -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white/95 dark:bg-gray-800/95 border-t border-gray-200 dark:border-gray-700">
-    <div class="flex flex-col text-center py-3">
-      <a href="#home" class="py-2 hover:text-sky-600 transition">Home</a>
-      <a href="#about" class="py-2 hover:text-sky-600 transition">About</a>
-      <a href="#facilities" class="py-2 hover:text-sky-600 transition">Hospitals</a>
-      <a href="#plans" class="py-2 hover:text-sky-600 transition">Plans</a>
-      <a href="#faq" class="py-2 hover:text-sky-600 transition">FAQ</a>
-      <a href="#contact" class="py-2 hover:text-sky-600 transition">Contact</a>
-      <a href="#plans" class="mt-2 mx-6 bg-gradient-to-r from-sky-600 to-sky-500 text-white py-2 rounded-lg shadow hover:scale-105 transition">
-        Get Insurance
-      </a>
-    </div>
-  </div>
-</header>
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
+        <select id="langSwitch"
+          class="hidden md:inline-block border rounded px-2 py-1 text-sm bg-white dark:bg-gray-800"
+          aria-label="Language">
+          <option value="so">SO</option>
+          <option value="en">EN</option>
+        </select>
 
-<!-- ============================================= -->
-<!-- HERO -->
-<!-- ============================================= -->
-<section id="home" class="relative flex flex-col md:flex-row items-center justify-center min-h-screen hero-min bg-gradient-to-br from-sky-500 to-sky-600 text-white">
-  <div class="w-full md:w-1/2 h-[60vh] md:h-full relative overflow-hidden">
-    <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg"
-      alt="Hero" class="w-full h-full object-cover rounded-lg shadow-lg" />
-    <div class="absolute inset-0 bg-black/40 md:hidden"></div>
-  </div>
+        <button id="darkToggle" aria-label="Toggle dark"
+          class="p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">🌙</button>
 
-  <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left">
-    <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
-      <span id="typedHero" class="block"></span>
-    </h1>
-    <p id="heroSubtitle" class="text-lg md:text-xl opacity-90 mb-6">
-      Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.
-    </p>
+        <a href="#plans"
+          class="hidden md:inline-block bg-gradient-to-r from-sky-600 to-sky-500 text-white px-4 py-2 rounded-lg font-semibold shadow hover:scale-105 transition">
+          Get Insurance
+        </a>
 
-    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-      <a href="#plans" class="bg-gradient-to-r from-green-400 to-green-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">
-        Get Insurance
-      </a>
-      <button onclick="openRegister()"
-        class="bg-white/90 text-sky-700 px-5 py-3 rounded-full font-semibold hover:scale-105 transition shadow-md">
-        Register
-      </button>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- ABOUT -->
-<!-- ============================================= -->
-<section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-    <div data-aos="fade-right">
-      <h2 id="aboutTitle" class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
-      <p class="text-gray-700 dark:text-gray-300 mb-3">Care Source Africa waa shirkad Soomaaliyeed oo bixisa caymis caafimaad oo la awoodi karo — adeegyada ugu wanaagsan ee caafimaadka bulshada Muqdisho iyo hareeraheeda.</p>
-      <p class="text-gray-700 dark:text-gray-300">Waxaan la shaqeynaa isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya adeegyo heer caalami.</p>
-    </div>
-
-    <div data-aos="fade-left">
-      <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?auto=format&fit=crop&q=80&w=900"
-        alt="Hospital" class="rounded-2xl shadow-lg w-full object-cover" />
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- FACILITIES -->
-<!-- ============================================= -->
-<section id="facilities" class="py-20 bg-white dark:bg-gray-800">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga ah</h2>
-
-    <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in">
-        <img src="https://plus.unsplash.com/premium_photo-1682130157004-057c137d96d5?w=500&auto=format&fit=crop&q=60"
-          alt="MRI" class="rounded-xl mb-4 h-56 w-full object-cover" />
-        <h3 class="text-xl font-semibold text-sky-700 mb-2">MRI & Scanning Technology</h3>
-        <p class="text-gray-600 dark:text-gray-300">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
-      </div>
-
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="120">
-        <img src="https://images.unsplash.com/photo-1563233269-7e86880558a7?w=500&auto=format&fit=crop&q=60"
-          alt="Hospital" class="rounded-xl mb-4 h-56 w-full object-cover" />
-        <h3 class="text-xl font-semibold text-sky-700 mb-2">Isbitaallo Casri ah</h3>
-        <p class="text-gray-600 dark:text-gray-300">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer caalami.</p>
-      </div>
-
-      <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="240">
-        <img src="https://plus.unsplash.com/premium_photo-1663050790540-223dad060419?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8bGFwJTIwaG9zcGl0YWwlMjBhZnJpY2F8ZW58MHx8MHx8fDA%3D"
-          alt="Lab" class="rounded-xl mb-4 h-56 w-full object-cover" />
-        <h3 class="text-xl font-semibold text-sky-700 mb-2">Qalab Shaybaar Casri ah</h3>
-        <p class="text-gray-600 dark:text-gray-300">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- PLANS -->
-<!-- ============================================= -->
-<section id="plans" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center text-sky-700 mb-10" data-aos="fade-up">Qorshayaasha Caymiska</h2>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <div class="bg-white p-6 rounded-2xl shadow card-hover border border-gray-200" data-aos="flip-left">
-        <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Darawalada Bajaaj</h3>
-        <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$15</span> bishii</p>
-        <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-          <li>✔ Daryeel Degdeg ah</li>
-          <li>✔ Daawaynta shilalka</li>
-          <li>✖ Ilkaha & Aragga</li>
-        </ul>
-        <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-sky-600 card-hover" data-aos="flip-left"
-        data-aos-delay="120">
-        <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Qoyska</h3>
-        <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$20</span> bishii</p>
-        <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-          <li>✔ Daryeelka Qoyska oo Dhameystiran</li>
-          <li>✔ Ilkaha & Aragga</li>
-          <li>✔ Baaritaan Sannadle ah</li>
-        </ul>
-        <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-      </div>
-
-      <div class="bg-white p-6 rounded-2xl shadow card-hover" data-aos="flip-left" data-aos-delay="240">
-        <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Heerka Sare</h3>
-        <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$75</span> bishii</p>
-        <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-          <li>✔ Caymiska Caafimaadka oo Dhameystiran</li>
-          <li>✔ Faa’iidooyinka Qoyska</li>
-          <li>✔ Helitaan Caalami ah</li>
-        </ul>
-        <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- PARTNERS -->
-<!-- ============================================= -->
-<section class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold text-sky-700 mb-8">Our Hospital Partners</h2>
-    <div class="grid grid-cols-2 md:grid-cols-5 gap-6 items-center">
-      <img src="https://via.placeholder.com/140x60?text=Partner+1" class="mx-auto grayscale hover:grayscale-0 transition" alt="">
-      <img src="https://via.placeholder.com/140x60?text=Partner+2" class="mx-auto grayscale hover:grayscale-0 transition" alt="">
-      <img src="https://via.placeholder.com/140x60?text=Partner+3" class="mx-auto grayscale hover:grayscale-0 transition" alt="">
-      <img src="https://via.placeholder.com/140x60?text=Partner+4" class="mx-auto grayscale hover:grayscale-0 transition" alt="">
-      <img src="https://via.placeholder.com/140x60?text=Partner+5" class="mx-auto grayscale hover:grayscale-0 transition" alt="">
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- FAQ -->
-<!-- ============================================= -->
-<section id="faq" class="py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-6 text-left">
-    <h2 class="text-3xl font-bold text-sky-700 mb-6 text-center">Su'aalaha Badanaa La Weydiiyo</h2>
-
-    <div class="space-y-4">
-
-      <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-sky-700 cursor-pointer">Sideen ku diiwaangashan karaa Caymiska?</h3>
-        <p class="text-gray-600 mt-2">Waxaad si fudud ugu buuxin kartaa foomka online ka ah ee boggan ama wac kooxda.</p>
-      </div>
-
-      <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-sky-700 cursor-pointer">Maxay tahay daryeelka la daboolayo?</h3>
-        <p class="text-gray-600 mt-2">Caymiska wuxuu daboolayaa adeegyada caafimaad ee degdegga ah, baaritaannada caafimaadka, iyo qorshooyinka qoyska.</p>
-      </div>
-
-      <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
-        <h3 class="font-semibold text-sky-700 cursor-pointer">Sidee ayaan usheegan karaa dhibaato?</h3>
-        <p class="text-gray-600 mt-2">Waxaad la xiriiri kartaa kooxda Care Source Africa via email ama telefoon si loo bilaabo habka sheegashada.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- TESTIMONIALS -->
-<!-- ============================================= -->
-<section id="testimonials" class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold text-sky-700 mb-8">Maxay Bukaannadu Ka Yiraahdeen</h2>
-
-    <div class="relative">
-      <div id="testimonialTrack" class="flex gap-6 overflow-hidden transition-transform duration-500">
-
-        <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
-          <p class="text-gray-600 mb-4">“Adeeg caafimaad oo heer sare ah, shaqaale naxariis leh!”</p>
-          <h4 class="font-semibold text-sky-700">Amina H.</h4>
-          <p class="text-gray-400 text-sm">Muqdisho</p>
-        </div>
-
-        <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
-          <p class="text-gray-600 mb-4">“Caymiska caafimaad ee Care Source Africa waa mid la isku halleyn karo.”</p>
-          <h4 class="font-semibold text-sky-700">Abdi R.</h4>
-          <p class="text-gray-400 text-sm">Hodan</p>
-        </div>
-
-        <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
-          <p class="text-gray-600 mb-4">“Xarumo caafimaad casri ah iyo daawayn degdeg ah.”</p>
-          <h4 class="font-semibold text-sky-700">Fatima S.</h4>
-          <p class="text-gray-400 text-sm">Wadajir</p>
-        </div>
-
-      </div>
-
-      <button id="prevTest" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">◀</button>
-      <button id="nextTest" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">▶</button>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================= -->
-<!-- CONTACT -->
-<!-- ============================================= -->
-<section id="contact" class="py-20 bg-white">
-  <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-
-    <div data-aos="fade-right">
-      <h2 class="text-3xl font-bold text-sky-700 mb-4">Nala Soo Xiriir</h2>
-      <p class="text-gray-600 mb-6">Kooxdayadu waxay diyaar u yihiin inay kaa caawiyaan diiwaangelinta, sheegashada, iyo wixii kale ee la xiriira caymiska.</p>
-
-      <div class="grid gap-4">
-
-        <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
-          <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <!-- mobile menu button -->
+        <button id="mobileBtn" aria-controls="mobileMenu" aria-expanded="false"
+          class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M3 8v8a2 2 0 002 2h14a2 2 0 002-2V8" />
+              d="M4 6h16M4 12h16M4 18h16" />
           </svg>
-          <div>
-            <div class="font-semibold">info@caresourceafrica.com</div>
-            <div class="text-sm text-gray-500">Email Support 24/7</div>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE MENU -->
+    <div id="mobileMenu"
+      class="hidden md:hidden bg-white/95 dark:bg-gray-900/95 border-t border-gray-200 dark:border-gray-700 backdrop-blur-lg shadow-lg transform origin-top transition-all duration-300 ease-in-out"
+      aria-hidden="true">
+      <div class="flex flex-col text-center py-4 space-y-2">
+        <a href="#home"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Home</a>
+        <a href="#about"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">About</a>
+        <a href="#facilities"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Hospitals</a>
+        <a href="#plans"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Plans</a>
+        <a href="#faq"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">FAQ</a>
+        <a href="#contact"
+          class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Contact</a>
+
+        <a href="#plans"
+          class="mt-3 mx-6 bg-gradient-to-r from-sky-600 to-sky-500 text-white py-3 rounded-xl text-lg shadow-md hover:shadow-lg hover:scale-[1.03] transition-all duration-200">
+          Get Insurance
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home"
+    class="relative flex flex-col md:flex-row items-center justify-center min-h-screen hero-min bg-gradient-to-br from-sky-500 to-sky-600 text-white pt-16">
+    <div class="w-full md:w-1/2 h-[60vh] md:h-full relative overflow-hidden rounded-b-xl md:rounded-none">
+      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg" alt="Hero"
+        class="w-full h-full object-cover rounded-lg shadow-lg" />
+      <div class="absolute inset-0 bg-black/30 md:hidden"></div>
+    </div>
+
+    <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left">
+      <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight">
+        <span id="typedHero" class="block"></span>
+      </h1>
+      <p id="heroSubtitle" class="text-lg md:text-xl opacity-90 mb-6">
+        Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.
+      </p>
+
+      <div class="flex flex-wrap justify-center md:justify-start gap-4">
+        <a href="#plans"
+          class="bg-gradient-to-r from-green-400 to-green-500 px-6 py-3 rounded-full text-white font-semibold shadow-lg hover:scale-105 transition">
+          Get Insurance
+        </a>
+        <button onclick="openRegister()"
+          class="bg-white/90 text-sky-700 px-5 py-3 rounded-full font-semibold hover:scale-105 transition shadow-md">
+          Register
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div data-aos="fade-right">
+        <h2 id="aboutTitle" class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
+        <p class="text-gray-700 dark:text-gray-300 mb-3">Care Source Africa waa shirkad Soomaaliyeed oo bixisa caymis
+          caafimaad oo la awoodi karo — adeegyada ugu wanaagsan ee caafimaadka bulshada Muqdisho iyo hareeraheeda.</p>
+        <p class="text-gray-700 dark:text-gray-300">Waxaan la shaqeynaa isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya
+          adeegyo heer caalami.</p>
+      </div>
+      <div data-aos="fade-left">
+        <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?auto=format&fit=crop&q=80&w=900"
+          alt="Hospital" class="rounded-2xl shadow-lg w-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- FACILITIES -->
+  <section id="facilities" class="py-20 bg-white dark:bg-gray-800">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga
+        ah</h2>
+      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in">
+          <img src="https://plus.unsplash.com/premium_photo-1682130157004-057c137d96d5?w=500&auto=format&fit=crop&q=60"
+            alt="MRI" class="rounded-xl mb-4 h-56 w-full object-cover" />
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">MRI & Scanning Technology</h3>
+          <p class="text-gray-600 dark:text-gray-300">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in"
+          data-aos-delay="120">
+          <img src="https://images.unsplash.com/photo-1563233269-7e86880558a7?w=500&auto=format&fit=crop&q=60"
+            alt="Hospital" class="rounded-xl mb-4 h-56 w-full object-cover" />
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">Isbitaallo Casri ah</h3>
+          <p class="text-gray-600 dark:text-gray-300">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer
+            caalami.</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="240">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1663050790540-223dad060419?w=500&auto=format&fit=crop&q=60"
+            alt="Lab" class="rounded-xl mb-4 h-56 w-full object-cover" />
+          <h3 class="text-xl font-semibold text-sky-700 mb-2">Qalab Shaybaar Casri ah</h3>
+          <p class="text-gray-600 dark:text-gray-300">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLANS -->
+  <section id="plans" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-sky-700 mb-10" data-aos="fade-up">Qorshayaasha Caymiska</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white p-6 rounded-2xl shadow card-hover border border-gray-200" data-aos="flip-left">
+          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Darawalada Bajaaj</h3>
+          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$15</span>
+            bishii</p>
+          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
+            <li>✔ Daryeel Degdeg ah</li>
+            <li>✔ Daawaynta shilalka</li>
+            <li>✖ Ilkaha & Aragga</li>
+          </ul>
+          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-sky-600 card-hover" data-aos="flip-left"
+          data-aos-delay="120">
+          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Qoyska</h3>
+          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$20</span>
+            bishii</p>
+          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
+            <li>✔ Daryeelka Qoyska oo Dhameystiran</li>
+            <li>✔ Ilkaha & Aragga</li>
+            <li>✔ Baaritaan Sannadle ah</li>
+          </ul>
+          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow card-hover" data-aos="flip-left" data-aos-delay="240">
+          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Heerka Sare</h3>
+          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$75</span>
+            bishii</p>
+          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
+            <li>✔ Caymiska Caafimaadka oo Dhameystiran</li>
+            <li>✔ Faa’iidooyinka Qoyska</li>
+            <li>✔ Helitaan Caalami ah</li>
+          </ul>
+          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-sky-700 mb-8">Our Hospital Partners</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-6 items-center">
+        <img src="https://via.placeholder.com/140x60?text=Partner+1" class="mx-auto grayscale hover:grayscale-0 transition"
+          alt="partner 1">
+        <img src="https://via.placeholder.com/140x60?text=Partner+2" class="mx-auto grayscale hover:grayscale-0 transition"
+          alt="partner 2">
+        <img src="https://via.placeholder.com/140x60?text=Partner+3" class="mx-auto grayscale hover:grayscale-0 transition"
+          alt="partner 3">
+        <img src="https://via.placeholder.com/140x60?text=Partner+4" class="mx-auto grayscale hover:grayscale-0 transition"
+          alt="partner 4">
+        <img src="https://via.placeholder.com/140x60?text=Partner+5" class="mx-auto grayscale hover:grayscale-0 transition"
+          alt="partner 5">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-6 text-left">
+      <h2 class="text-3xl font-bold text-sky-700 mb-6 text-center">Su'aalaha Badanaa La Weydiiyo</h2>
+      <div class="space-y-4">
+        <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+          <h3 class="font-semibold text-sky-700 cursor-pointer">Sideen ku diiwaangashan karaa Caymiska?</h3>
+          <p class="text-gray-600 mt-2">Waxaad si fudud ugu buuxin kartaa foomka online ka ah ee boggan ama wac kooxda.</p>
+        </div>
+        <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+          <h3 class="font-semibold text-sky-700 cursor-pointer">Maxay tahay daryeelka la daboolayo?</h3>
+          <p class="text-gray-600 mt-2">Caymiska wuxuu daboolayaa adeegyada caafimaad ee degdegga ah, baaritaannada caafimaadka,
+            iyo qorshooyinka qoyska.</p>
+        </div>
+        <div class="faq-item bg-gray-50 p-6 rounded-2xl shadow">
+          <h3 class="font-semibold text-sky-700 cursor-pointer">Sidee ayaan usheegan karaa dhibaato?</h3>
+          <p class="text-gray-600 mt-2">Waxaad la xiriiri kartaa kooxda Care Source Africa via email ama telefoon si loo bilaabo
+            habka sheegashada.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials" class="py-16 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-bold text-sky-700 mb-8">Maxay Bukaannadu Ka Yiraahdeen</h2>
+
+      <div class="relative">
+        <div id="testimonialTrack" class="flex gap-6 overflow-hidden transition-transform duration-500">
+          <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
+            <p class="text-gray-600 mb-4">“Adeeg caafimaad oo heer sare ah, shaqaale naxariis leh!”</p>
+            <h4 class="font-semibold text-sky-700">Amina H.</h4>
+            <p class="text-gray-400 text-sm">Muqdisho</p>
+          </div>
+
+          <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
+            <p class="text-gray-600 mb-4">“Caymiska caafimaad ee Care Source Africa waa mid la isku halleyn karo.”</p>
+            <h4 class="font-semibold text-sky-700">Abdi R.</h4>
+            <p class="text-gray-400 text-sm">Hodan</p>
+          </div>
+
+          <div class="min-w-full md:min-w-1/3 bg-white p-8 rounded-2xl shadow">
+            <p class="text-gray-600 mb-4">“Xarumo caafimaad casri ah iyo daawayn degdeg ah.”</p>
+            <h4 class="font-semibold text-sky-700">Fatima S.</h4>
+            <p class="text-gray-400 text-sm">Wadajir</p>
           </div>
         </div>
 
-        <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
-          <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M3 5h2l.4 2M7 7h10l1 9H6L7 7zm0 0L5.6 5.2M16 3h2a1 1 0 011 1v2" />
-          </svg>
-          <div>
-            <div class="font-semibold">+252612194449</div>
-            <div class="text-sm text-gray-500">Call or WhatsApp</div>
-          </div>
-        </div>
-
+        <button id="prevTest"
+          class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">◀</button>
+        <button id="nextTest"
+          class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white p-2 rounded-full shadow">▶</button>
       </div>
     </div>
+  </section>
 
-    <!-- CONTACT FORM -->
-    <div data-aos="fade-left">
-      <form id="contactForm" class="bg-white rounded-3xl p-8 shadow">
-        <h3 class="text-xl font-bold mb-4">Fariin noogu soo dir</h3>
+  <!-- CONTACT -->
+  <section id="contact" class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
+      <div data-aos="fade-right">
+        <h2 class="text-3xl font-bold text-sky-700 mb-4">Nala Soo Xiriir</h2>
+        <p class="text-gray-600 mb-6">Kooxdayadu waxay diyaar u yihiin inay kaa caawiyaan diiwaangelinta, sheegashada, iyo wixii
+          kale ee la xiriira caymiska.</p>
 
-        <div class="grid md:grid-cols-2 gap-3">
-          <input name="name" required placeholder="Magacaaga" class="p-3 border rounded" />
-          <input name="email" type="email" required placeholder="Email-kaaga" class="p-3 border rounded" />
-          <input name="phone" placeholder="Number" class="p-3 border rounded" />
-          <input name="subject" placeholder="Subject" class="p-3 border rounded" />
-          <textarea name="message" placeholder="Fariintaada" class="md:col-span-2 p-3 border rounded h-36"></textarea>
+        <div class="grid gap-4">
+          <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
+            <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M3 8v8a2 2 0 002 2h14a2 2 0 002-2V8" />
+            </svg>
+            <div>
+              <div class="font-semibold">info@caresourceafrica.com</div>
+              <div class="text-sm text-gray-500">Email Support 24/7</div>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
+            <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5h2l.4 2M7 7h10l1 9H6L7 7zm0 0L5.6 5.2M16 3h2a1 1 0 011 1v2" />
+            </svg>
+            <div>
+              <div class="font-semibold">+252612194449</div>
+              <div class="text-sm text-gray-500">Call or WhatsApp</div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="mt-4 flex gap-2 justify-end">
-          <button type="reset" class="px-4 py-2 rounded border">Clear</button>
-          <button type="submit" class="px-5 py-2 bg-sky-600 text-white rounded">Send Message</button>
+      <div data-aos="fade-left">
+        <form id="contactForm" class="bg-white rounded-3xl p-8 shadow" novalidate>
+          <h3 class="text-xl font-bold mb-4">Fariin noogu soo dir</h3>
+          <div class="grid md:grid-cols-2 gap-3">
+            <input name="name" required placeholder="Magacaaga" class="p-3 border rounded" />
+            <input name="email" type="email" required placeholder="Email-kaaga" class="p-3 border rounded" />
+            <input name="phone" placeholder="Number" class="p-3 border rounded" />
+            <input name="subject" placeholder="Subject" class="p-3 border rounded" />
+            <textarea name="message" placeholder="Fariintaada" class="md:col-span-2 p-3 border rounded h-36"></textarea>
+          </div>
+          <div class="mt-4 flex gap-2 justify-end">
+            <button type="reset" class="px-4 py-2 rounded border">Clear</button>
+            <button type="submit" class="px-5 py-2 bg-sky-600 text-white rounded">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-sky-700 text-white py-6 mt-6">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <p>© <span id="year"></span> Care Source Africa — Caafimaad & Aaminaad | Muqdisho, Soomaaliya</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a href="https://wa.me/+252612194449" target="_blank"
+    class="fixed right-5 bottom-20 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:scale-105 transition"
+    aria-label="WhatsApp">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path
+        d="M20.52 3.48A11.88 11.88 0 0012.04.75 11.9 11.9 0 003.52 3.48 11.8 11.8 0 000 12c0 2.09.55 4.09 1.6 5.86L0 24l6.64-1.72A11.88 11.88 0 0012 24c6.56 0 12-5.44 12-12 0-3.16-1.23-6.12-3.48-8.52zM12 21.5c-1.6 0-3.2-.4-4.6-1.16L6 20l.8-1.2A9.2 9.2 0 013.5 12 8.5 8.5 0 0112 3.5 8.5 8.5 0 0120.5 12 8.5 8.5 0 0112 21.5zM17.4 14.07l-1.33-.6a.7.7 0 00-.66.1l-.9.78a6.1 6.1 0 01-2.9-2.14l.77-.9a.7.7 0 00.09-.67L11.9 8.6a.7.7 0 00-.66-.45H9a.7.7 0 00-.7.7A5.5 5.5 0 0014.5 15c.37 0 .72-.1 1.03-.29l.86-.55a.7.7 0 00.31-.1l1.7-1.06a.7.7 0 00.27-.95l-.16-.32z" />
+    </svg>
+  </a>
+
+  <!-- CALL -->
+  <a href="tel:+252612194449"
+    class="fixed right-5 bottom-5 z-50 bg-sky-600 text-white p-3 rounded-full shadow-lg hover:scale-105 transition"
+    aria-label="Call">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.06-.27c1.12.45 2.33.69 3.57.69a1 1 0 011 1v3.5a1 1 0 01-1 1A17 17 0 013 6a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.24 2.45.69 3.57a1 1 0 01-.27 1.06l-2.3 2.16z" />
+    </svg>
+  </a>
+
+  <!-- REGISTER MODAL -->
+  <div id="registerModal" class="hidden fixed inset-0 z-60 flex items-center justify-center bg-black/50 p-4"
+    aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="registerTitle">
+    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-6">
+      <h3 id="registerTitle" class="text-xl font-bold mb-3 text-sky-700">Register for Care</h3>
+      <form id="registerForm" class="space-y-3" novalidate>
+        <input name="fullname" required placeholder="Full name" class="w-full p-3 border rounded" />
+        <input name="phone" required placeholder="Phone" class="w-full p-3 border rounded" />
+        <input name="email" type="email" placeholder="Email (optional)" class="w-full p-3 border rounded" />
+        <div class="flex justify-end gap-2">
+          <button type="button" onclick="closeRegister()" class="px-4 py-2 rounded border">Cancel</button>
+          <button type="submit" class="px-4 py-2 bg-sky-600 text-white rounded">Submit</button>
         </div>
       </form>
     </div>
-
   </div>
-</section>
 
-<!-- ============================================= -->
-<!-- FOOTER -->
-<!-- ============================================= -->
-<footer class="bg-sky-700 text-white py-6 mt-6">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <p>© <span id="year"></span> Care Source Africa — Caafimaad & Aaminaad | Muqdisho, Soomaaliya</p>
-  </div>
-</footer>
+  <!-- SCRIPTS -->
+  <script defer src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // ---------- Init helpers ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      // AOS
+      if (window.AOS) AOS.init({ duration: 900, once: true });
 
-<!-- Floating WhatsApp -->
-<a href="https://wa.me/+252612194449" target="_blank"
-  class="fixed right-5 bottom-20 z-50 bg-green-500 text-white p-3 rounded-full shadow-lg hover:scale-105 transition">
-  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M20.52 3.48A11.88 11.88 0 0012.04...."></path>
-  </svg>
-</a>
+      // Typed.js (guard)
+      if (window.Typed) {
+        new Typed('#typedHero', {
+          strings: ['Caymis Caafimaad Casri ah', 'Reliable • Affordable • Digital'],
+          typeSpeed: 60,
+          backSpeed: 40,
+          loop: true
+        });
+      }
 
-<!-- CALL -->
-<a href="tel:+252612194449"
-  class="fixed right-5 bottom-5 z-50 bg-sky-600 text-white p-3 rounded-full shadow-lg hover:scale-105 transition">
-  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6.62 10.79a15.05...."></path>
-  </svg>
-</a>
+      // year
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-<!-- ============================================= -->
-<!-- REGISTER MODAL -->
-<!-- ============================================= -->
-<div id="registerModal" class="hidden fixed inset-0 z-60 flex items-center justify-center bg-black/50 p-4">
-  <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl w-full max-w-md p-6">
-    <h3 class="text-xl font-bold mb-3 text-sky-700">Register for Care</h3>
+      // Dark mode persistent
+      const darkToggle = document.getElementById('darkToggle');
+      const root = document.documentElement;
+      const savedTheme = localStorage.getItem('csa-theme');
+      if (savedTheme === 'dark') {
+        root.classList.add('dark');
+        darkToggle.textContent = '☀️';
+      } else {
+        root.classList.remove('dark');
+        darkToggle.textContent = '🌙';
+      }
+      darkToggle.addEventListener('click', () => {
+        root.classList.toggle('dark');
+        const isDark = root.classList.contains('dark');
+        darkToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('csa-theme', isDark ? 'dark' : 'light');
+      });
 
-    <form id="registerForm" class="space-y-3">
-      <input name="fullname" required placeholder="Full name" class="w-full p-3 border rounded" />
-      <input name="phone" required placeholder="Phone" class="w-full p-3 border rounded" />
-      <input name="email" type="email" placeholder="Email (optional)" class="w-full p-3 border rounded" />
+      // Language switch (simple)
+      const translations = {
+        en: {
+          heroSubtitle: 'Modern, reliable health insurance — Mogadishu.',
+          aboutTitle: 'About Care Source Africa',
+          getInsurance: 'Get Insurance',
+          plansTitle: 'Insurance Plans',
+          contactTitle: 'Contact Us'
+        },
+        so: {
+          heroSubtitle: 'Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.',
+          aboutTitle: 'Ku saabsan Care Source Africa',
+          getInsurance: 'Get Insurance',
+          plansTitle: 'Qorshayaasha Caymiska',
+          contactTitle: 'Nala Soo Xiriir'
+        }
+      };
+      const langSwitch = document.getElementById('langSwitch');
+      function applyLang(lang) {
+        const t = translations[lang] || translations['so'];
+        const heroSubtitle = document.getElementById('heroSubtitle');
+        const aboutTitle = document.getElementById('aboutTitle');
+        if (heroSubtitle) heroSubtitle.textContent = t.heroSubtitle;
+        if (aboutTitle) aboutTitle.textContent = t.aboutTitle;
+      }
+      if (langSwitch) {
+        // load saved preference
+        const savedLang = localStorage.getItem('csa-lang') || 'so';
+        langSwitch.value = savedLang;
+        applyLang(savedLang);
+        langSwitch.addEventListener('change', (e) => {
+          const v = e.target.value;
+          localStorage.setItem('csa-lang', v);
+          applyLang(v);
+        });
+      }
 
-      <div class="flex justify-end gap-2">
-        <button type="button" onclick="closeRegister()" class="px-4 py-2 rounded border">Cancel</button>
-        <button type="submit" class="px-4 py-2 bg-sky-600 text-white rounded">Submit</button>
-      </div>
-    </form>
-  </div>
-</div>
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+          const href = link.getAttribute('href');
+          if (!href || href === '#') return;
+          // if external target, let default
+          if (!href.startsWith('#')) return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // close mobile menu if open
+            const menu = document.getElementById('mobileMenu');
+            if (menu && !menu.classList.contains('hidden')) {
+              toggleMobileMenu();
+            }
+          }
+        });
+      });
 
-<!-- ============================================= -->
-<!-- SCRIPTS -->
-<!-- ============================================= -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+      // FAQ toggle
+      document.querySelectorAll('.faq-item h3').forEach(h => {
+        const p = h.nextElementSibling;
+        if (p) p.style.display = 'block'; // keep visible by default; change if you want collapsed
+        h.addEventListener('click', () => {
+          if (!p) return;
+          p.style.display = p.style.display === 'none' ? 'block' : 'none';
+        });
+      });
 
-<script>
-AOS.init({ duration: 900, once: true });
+      // Contact form demo
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Mahadsanid — your message has been received (demo).');
+          contactForm.reset();
+        });
+      }
 
-new Typed('#typedHero', {
-  strings: ['Caymis Caafimaad Casri ah', 'Reliable • Affordable • Digital'],
-  typeSpeed: 60,
-  backSpeed: 40,
-  loop: true
-});
+      // Register modal form
+      const registerForm = document.getElementById('registerForm');
+      if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Mahadsanid — registration received (demo).');
+          closeRegister();
+          registerForm.reset();
+        });
+      }
 
-// Year
-document.getElementById('year').textContent = new Date().getFullYear();
+      // Testimonials carousel controls
+      const track = document.getElementById('testimonialTrack');
+      let tIndex = 0;
+      function updateTrack() {
+        if (!track) return;
+        const slides = track.children;
+        if (!slides.length) return;
+        const width = slides[0].offsetWidth;
+        track.style.transform = `translateX(-${tIndex * width}px)`;
+        track.style.transition = 'transform 400ms';
+      }
+      document.getElementById('nextTest')?.addEventListener('click', () => {
+        if (!track) return;
+        tIndex = (tIndex + 1) % track.children.length;
+        updateTrack();
+      });
+      document.getElementById('prevTest')?.addEventListener('click', () => {
+        if (!track) return;
+        tIndex = (tIndex - 1 + track.children.length) % track.children.length;
+        updateTrack();
+      });
+      window.addEventListener('resize', updateTrack);
+      setInterval(() => {
+        if (!track) return;
+        tIndex = (tIndex + 1) % track.children.length;
+        updateTrack();
+      }, 5000);
 
-// Mobile menu
-document.getElementById('mobileBtn').addEventListener('click', () => {
-  document.getElementById('mobileMenu').classList.toggle('hidden');
-});
+      // Mobile menu toggle with animation
+      const mobileBtn = document.getElementById('mobileBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      function toggleMobileMenu() {
+        if (!mobileMenu) return;
+        if (mobileMenu.classList.contains('hidden')) {
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+          mobileBtn.setAttribute('aria-expanded', 'true');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+        } else {
+          mobileMenu.style.maxHeight = '0px';
+          mobileBtn.setAttribute('aria-expanded', 'false');
+          mobileMenu.setAttribute('aria-hidden', 'true');
+          setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+        }
+      }
+      mobileBtn?.addEventListener('click', toggleMobileMenu);
 
-// Dark mode
-document.getElementById('darkToggle').addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark');
-  document.getElementById('darkToggle').textContent =
-    document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
-});
+      // Register modal open/close helpers
+      window.openRegister = function () {
+        const m = document.getElementById('registerModal');
+        if (!m) return;
+        m.classList.remove('hidden');
+        m.setAttribute('aria-hidden', 'false');
+        // focus management
+        const first = m.querySelector('input, button, [tabindex]');
+        if (first) first.focus();
+      };
+      window.closeRegister = function () {
+        const m = document.getElementById('registerModal');
+        if (!m) return;
+        m.classList.add('hidden');
+        m.setAttribute('aria-hidden', 'true');
+        // return focus to register button for accessibility
+        document.querySelector('button[onclick="openRegister()"]')?.focus();
+      };
 
-// FAQ toggle
-document.querySelectorAll('.faq-item h3').forEach(h => {
-  h.addEventListener('click', () => {
-    const p = h.nextElementSibling;
-    p.style.display = p.style.display === 'none' ? 'block' : 'none';
-  });
-});
+      // small accessibility: close modal on Escape
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          const mod = document.getElementById('registerModal');
+          if (mod && !mod.classList.contains('hidden')) closeRegister();
+        }
+      });
 
-// Testimonials carousel
-let index = 0;
-const track = document.getElementById('testimonialTrack');
-
-function updateCarousel() {
-  const width = track.children[0].offsetWidth;
-  track.style.transform = `translateX(-${index * width}px)`;
-}
-
-document.getElementById('nextTest').addEventListener('click', () => {
-  index = (index + 1) % track.children.length;
-  updateCarousel();
-});
-
-document.getElementById('prevTest').addEventListener('click', () => {
-  index = (index - 1 + track.children.length) % track.children.length;
-  updateCarousel();
-});
-
-// Register Modal
-function openRegister() {
-  document.getElementById('registerModal').classList.remove('hidden');
-}
-
-function closeRegister() {
-  document.getElementById('registerModal').classList.add('hidden');
-}
-</script>
-
+      // Small: prevent layout shift on first paint by ensuring mobile menu collapsed
+      if (mobileMenu) {
+        mobileMenu.style.maxHeight = '0px';
+      }
+    });
+  </script>
 </body>
-</html>
 
+</html>
