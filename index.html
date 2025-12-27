@@ -8,76 +8,16 @@
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- AOS for animations -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
   <style>
     body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
     .card-hover:hover { transform: translateY(-6px) scale(1.03); transition: all 0.28s ease; box-shadow: 0 10px 25px rgba(2,6,23,.12); }
-    #mobileMenu { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
     .hero-min { min-height: 60vh; }
   </style>
 </head>
-<!-- Mobile Menu Button & Menu -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md dark:bg-gray-800/90 border-b border-gray-200 dark:border-gray-700">
-  <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-    <!-- Logo -->
-    <a href="#home" class="flex items-center gap-3">
-      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765531775/cares_lsjddz.jpg" alt="CASA Logo" class="w-10 h-10 rounded-full object-cover" />
-      <div>
-        <div class="font-bold text-sky-700 dark:text-sky-300">Care Source <span class="text-sky-500">Africa</span></div>
-        <div class="text-xs text-gray-500 dark:text-gray-300 -mt-0.5">Caymis & Caafimaad</div>
-      </div>
-    </a>
-
-    <!-- Desktop nav -->
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a class="hover:text-sky-600 transition" href="#home">Home</a>
-      <a class="hover:text-sky-600 transition" href="#about">About</a>
-      <a class="hover:text-sky-600 transition" href="#facilities">Hospitals</a>
-      <a class="hover:text-sky-600 transition" href="#plans">Plans</a>
-      <a class="hover:text-sky-600 transition" href="#faq">FAQ</a>
-      <a class="hover:text-sky-600 transition" href="#contact">Contact</a>
-      <a href="#plans" class="bg-gradient-to-r from-green-400 to-green-500 text-white px-4 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Get Insurance</a>
-    </nav>
-
-    <!-- Mobile menu button -->
-    <button id="mobileBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-      </svg>
-    </button>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 overflow-hidden transition-all duration-300">
-    <div class="flex flex-col text-center py-4 space-y-2">
-      <a href="#home" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Home</a>
-      <a href="#about" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">About</a>
-      <a href="#facilities" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Hospitals</a>
-      <a href="#plans" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Plans</a>
-      <a href="#faq" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">FAQ</a>
-      <a href="#contact" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Contact</a>
-      <a href="#plans" class="mt-3 mx-6 bg-gradient-to-r from-green-400 to-green-500 text-white py-3 rounded-full font-semibold shadow hover:scale-105 transition">Get Insurance</a>
-    </div>
-  </div>
-</header>
-
-<script>
-  const mobileBtn = document.getElementById('mobileBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  mobileBtn.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden'); // Toggle Tailwind hidden class
-  });
-
-  // Close mobile menu on link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-    });
-  });
-</script>
 
 <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
 
@@ -113,7 +53,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 backdrop-blur-lg shadow-lg">
+    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 backdrop-blur-lg shadow-lg transition-all">
       <div class="flex flex-col text-center py-4 space-y-2">
         <a href="#home" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Home</a>
         <a href="#about" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">About</a>
@@ -128,12 +68,10 @@
 
   <!-- HERO -->
   <section id="home" class="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-br from-sky-500 to-sky-600 text-white pt-32 px-4 hero-min">
-    <!-- Hero Image -->
     <div class="w-full md:w-1/2 h-[60vh] md:h-full relative overflow-hidden rounded-lg shadow-lg">
       <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg" alt="Hero" class="w-full h-full object-cover rounded-lg" />
       <div class="absolute inset-0 bg-black/20 md:hidden"></div>
     </div>
-    <!-- Hero Text -->
     <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left">
       <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Trusted Health Insurance Across Africa</h1>
       <p class="text-lg md:text-xl opacity-90 mb-6">Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.</p>
@@ -149,7 +87,7 @@
   <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
       <div data-aos="fade-right">
-        <h2 id="aboutTitle" class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
         <p class="text-gray-700 dark:text-gray-300 mb-3">Shirkad Soomaaliyeed oo bixisa caymis caafimaad oo la awoodi karo.</p>
         <p class="text-gray-700 dark:text-gray-300">La shaqeynta isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya adeegyo heer caalami.</p>
       </div>
@@ -283,21 +221,20 @@
         <p class="text-gray-400 text-sm">Phone: +252612194449</p>
       </div>
     </div>
+
     <!-- Floating WhatsApp & Call Buttons -->
-<div class="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
-  <!-- WhatsApp -->
-  <a href="https://wa.me/252612194449" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-      <path d="M.057 24l1.687-6.163a11.91 11.91 0 01-1.587-5.945C.157 5.328 5.48 0 12.026 0 18.574 0 23.9 5.328 23.9 11.892c0 6.563-5.326 11.891-11.874 11.891a11.91 11.91 0 01-6.114-1.667L.057 24zm6.597-3.666c1.74.995 3.258 1.591 5.386 1.593 5.462 0 9.928-4.462 9.928-9.946 0-5.481-4.465-9.944-9.927-9.944-5.462 0-9.928 4.462-9.928 9.945 0 2.205.72 3.781 1.566 5.59l-.999 3.64 3.606-.955zm11.387-5.464c-.197-.099-1.168-.577-1.35-.644-.182-.066-.314-.099-.446.1-.131.197-.505.644-.618.774-.113.131-.226.147-.423.049-.197-.099-.832-.307-1.585-.978-.585-.52-.98-1.162-1.096-1.36-.115-.197-.012-.304.087-.403.089-.088.197-.226.296-.34.099-.113.132-.197.198-.33.066-.131.033-.246-.016-.344-.049-.099-.446-1.074-.611-1.47-.161-.386-.326-.334-.446-.34l-.38-.006c-.131 0-.344.05-.524.246-.182.197-.692.675-.692 1.643s.71 1.905.809 2.037c.099.132 1.398 2.134 3.395 2.994.475.205.844.327 1.133.419.476.151.909.13 1.252.079.381-.056 1.168-.477 1.333-.937.164-.459.164-.854.115-.937-.049-.083-.182-.131-.38-.23z"/>
-    </svg>
-  </a>
-  <!-- Call -->
-  <a href="tel:+252612194449" class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.09 3.272a1 1 0 01-.217 1.05l-2.2 2.2a16 16 0 006.585 6.585l2.2-2.2a1 1 0 011.05-.217l3.272 1.09a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C6.477 21 3 17.523 3 13V5z"/>
-    </svg>
-  </a>
-</div>
+    <div class="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
+      <a href="https://wa.me/252612194449" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M.057 24l1.687-6.163a11.91 11.91 0 01-1.587-5.945C.157 5.328 5.48 0 12.026 0 18.574 0 23.9 5.328 23.9 11.892c0 6.563-5.326 11.891-11.874 11.891a11.91 11.91 0 01-6.114-1.667L.057 24zm6.597-3.666c1.74.995 3.258 1.591 5.386 1.593 5.462 0 9.928-4.462 9.928-9.946 0-5.481-4.465-9.944-9.927-9.944-5.462 0-9.928 4.462-9.928 9.945 0 2.205.72 3.781 1.566 5.59l-.999 3.64 3.606-.955zm11.387-5.464c-.197-.099-1.168-.577-1.35-.644-.182-.066-.314-.099-.446.1-.131.197-.505.644-.618.774-.113.131-.226.147-.423.049-.197-.099-.832-.307-1.585-.978-.585-.52-.98-1.162-1.096-1.36-.115-.197-.012-.304.087-.403.089-.088.197-.226.296-.34.099-.113.132-.197.198-.33.066-.131.033-.246-.016-.344-.049-.099-.446-1.074-.611-1.47-.161-.386-.326-.334-.446-.34l-.38-.006c-.131 0-.344.05-.524.246-.182.197-.692.675-.692 1.643s.71 1.905.809 2.037c.099.132 1.398 2.134 3.395 2.994.475.205.844.327 1.133.419.476.151.909.13 1.252.079.381-.056 1.168-.477 1.333-.937.164-.459.164-.854.115-.937-.049-.083-.182-.131-.38-.23z"/>
+        </svg>
+      </a>
+      <a href="tel:+252612194449" class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.09 3.272a1 1 0 01-.217 1.05l-2.2 2.2a16 16 0 006.585 6.585l2.2-2.2a1 1 0 011.05-.217l3.272 1.09a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C6.477 21 3 17.523 3 13V5z"/>
+        </svg>
+      </a>
+    </div>
 
     <div class="mt-6 text-center text-gray-500 text-sm">&copy; 2025 Care Source Africa. All rights reserved.</div>
   </footer>
@@ -307,16 +244,14 @@
   <script>
     AOS.init({ duration: 800, once: true });
 
-    // Mobile menu toggle
+    // Mobile menu toggle using hidden class
     const mobileBtn = document.getElementById('mobileBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     mobileBtn.addEventListener('click', () => {
-      if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== "0px") {
-        mobileMenu.style.maxHeight = "0px";
-      } else {
-        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + "px";
-      }
+      mobileMenu.classList.toggle('hidden');
     });
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
     // Hero timer countdown
     const heroTimer = document.getElementById('heroTimer');
@@ -333,8 +268,7 @@
 
     // Placeholder register function
     function openRegister(){ alert("Register form will open here!"); }
-    
   </script>
-  
+
 </body>
 </html>
