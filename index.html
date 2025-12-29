@@ -1,274 +1,495 @@
 <!DOCTYPE html>
-<html lang="so" class="scroll-smooth">
-
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Care Source Africa — Shirkadda Caymiska Caafimaadka</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CareSource Africa Insurance | Secure Your Future</title>
+<meta name="description" content="CareSource Africa Insurance provides comprehensive insurance solutions across Africa, protecting your health, life, home, and business.">
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-  <!-- AOS for animations -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <style>
-    body { font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-    .card-hover:hover { transform: translateY(-6px) scale(1.03); transition: all 0.28s ease; box-shadow: 0 10px 25px rgba(2,6,23,.12); }
-    .hero-min { min-height: 60vh; }
-  </style>
+<style>
+:root{
+  --primary:oklab(94.782% 0.00224 -0.0078 / 0.26);   /* sky blue */
+  --secondary:#f7f3ef; /* green */
+  --accent:lab(50.3% 84.83 -61.71);    /* orange / coral */
+  --light:#3ba825;
+  --dark:#1e293b;
+  --text:#1c71e7;
+  --shadow:0 25px 55px rgba(0,0,0,.08);
+  --transition:.4s;
+}
+
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;scroll-behavior:smooth;}
+body{background:var(--light);color:var(--text);line-height:1.7;}
+a{text-decoration:none;color:inherit;}
+.container{width:90%;max-width:1300px;margin:auto;}
+section{padding:100px 0;}
+
+/* NAVBAR */
+header{
+  background:rgba(14,165,233,.95);
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  transition:0.4s;
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 0;
+}
+.logo{font-size:28px;font-weight:800;color:var(--accent);letter-spacing:1px;cursor:pointer;}
+.nav-links{list-style:none;display:flex;gap:30px;transition:var(--transition);}
+.nav-links a{font-weight:500;color:white;position:relative;transition:var(--transition);}
+.nav-links a::after{content:"";height:2px;width:0;background:var(--accent);position:absolute;left:0;bottom:-5px;transition:var(--transition);}
+.nav-links a:hover::after{width:100%;}
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;z-index:1001;}
+.hamburger span{width:28px;height:3px;background:white;border-radius:2px;transition:var(--transition);}
+
+/* HERO */
+.hero{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  min-height:90vh;
+  display:flex;
+  align-items:center;
+}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;}
+.hero h1{font-size:56px;line-height:1.2;}
+.hero span{color:var(--accent);}
+.hero p{margin:25px 0;font-size:20px;color:#f0f9ff;}
+.btn{display:inline-block;background:var(--accent);color:var(--dark);padding:18px 40px;border-radius:50px;font-weight:700;transition:.3s;}
+.btn:hover{transform:translateY(-3px);box-shadow:0 15px 35px rgba(245,158,11,.4);}
+.hero img{width:100%;border-radius:30px;box-shadow:0 20px 60px rgba(0,0,0,.25);}
+
+/* GRID CARDS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;}
+.card{background:#fff;padding:30px;border-radius:22px;box-shadow:var(--shadow);transition:var(--transition);text-align:center;}
+.card:hover{transform:translateY(-12px);}
+.card img{width:100%; border-radius:18px; margin-bottom:15px; object-fit:cover;}
+.card h3{margin-bottom:15px;}
+
+/* STATS */
+.stats h3{font-size:42px;color:var(--accent);}
+
+/* TESTIMONIALS */
+.client-img{width:120px;height:120px;border-radius:50%;object-fit:cover;margin:0 auto 15px;display:block;border:3px solid var(--accent);}
+
+/* CONTACT */
+.contact{background:#fff;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+input,textarea{width:100%;padding:15px;margin-bottom:15px;border-radius:12px;border:1px solid #cbd5e1;transition:var(--transition);}
+input:focus,textarea:focus{outline:none;border-color:var(--accent);}
+button{width:100%;padding:16px;background:var(--accent);border:none;border-radius:50px;font-weight:700;transition:.3s;cursor:pointer;}
+button:hover{opacity:.9;}
+
+/* FOOTER */
+footer{background:var(--dark);color:#cbd5e1;padding:60px 0;text-align:center;}
+.whatsapp{position:fixed;bottom:25px;right:25px;background:#25d366;color:#fff;padding:16px 22px;border-radius:50px;font-weight:700;box-shadow:0 15px 35px rgba(0,0,0,.35);transition:var(--transition);}
+.whatsapp:hover{transform:translateY(-3px);}
+
+/* MODERN CARDS */
+.card-modern{
+  background:#fff;
+  padding:35px 25px;
+  border-radius:25px;
+  text-align:center;
+  box-shadow:0 25px 50px rgba(0,0,0,0.08);
+  transition:transform .4s, box-shadow .4s;
+  position:relative;
+  overflow:hidden;
+}
+.card-modern::before{
+  content:"";
+  position:absolute;
+  top:-50%; left:-50%;
+  width:200%; height:200%;
+  background:linear-gradient(135deg,var(--accent),var(--primary));
+  opacity:0;
+  transform:rotate(25deg);
+  transition:.5s;
+}
+.card-modern:hover::before{
+  opacity:0.1;
+}
+.card-modern:hover{
+  transform:translateY(-15px);
+  box-shadow:0 40px 80px rgba(0,0,0,0.15);
+}
+.card-modern .icon{
+  font-size:40px;
+  color:var(--accent);
+  margin-bottom:20px;
+  transition:.3s;
+}
+.card-modern:hover .icon{
+  color:var(--primary);
+}
+.card-modern h3{
+  font-size:22px;
+  margin-bottom:15px;
+  color:var(--dark);
+  font-weight:700;
+}
+.card-modern p{
+  color:var(--text);
+  font-size:16px;
+  line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-grid,.contact-grid{grid-template-columns:1fr;text-align:center}
+  .hero h1{font-size:42px}
+  .nav-links{position:fixed;top:0;right:-100%;width:70%;height:100%;background:var(--primary);flex-direction:column;justify-content:center;align-items:center;gap:40px;padding-top:100px;transition:var(--transition);z-index:999;}
+  .nav-links.active{right:0;}
+  .hamburger{display:flex;}
+  .hamburger.toggle span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+  .hamburger.toggle span:nth-child(2){opacity:0;}
+  .hamburger.toggle span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+  .grid {grid-template-columns:1fr; gap:30px;}
+}
+</style>
 </head>
+<body>
 
-<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-100">
+<!-- NAVBAR -->
+<header>
+  <div class="container nav">
+    <div class="logo">CareSource</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#industries">Industries</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Testimonials</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
 
-  <!-- NAVBAR -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md dark:bg-gray-800/90 border-b border-gray-200 dark:border-gray-700">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3">
-      <!-- Logo -->
-      <a href="#home" class="flex items-center gap-3">
-        <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765531775/cares_lsjddz.jpg" alt="CASA Logo" class="w-10 h-10 rounded-full object-cover" />
-        <div>
-          <div class="font-bold text-sky-700 dark:text-sky-300">Care Source <span class="text-sky-500">Africa</span></div>
-          <div class="text-xs text-gray-500 dark:text-gray-300 -mt-0.5">Caymis & Caafimaad</div>
-        </div>
-      </a>
-
-      <!-- Desktop nav -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-        <a class="hover:text-sky-600 transition" href="#home">Home</a>
-        <a class="hover:text-sky-600 transition" href="#about">About</a>
-        <a class="hover:text-sky-600 transition" href="#facilities">Hospitals</a>
-        <a class="hover:text-sky-600 transition" href="#plans">Plans</a>
-        <a class="hover:text-sky-600 transition" href="#faq">FAQ</a>
-        <a class="hover:text-sky-600 transition" href="#contact">Contact</a>
-        <a href="#plans" class="bg-gradient-to-r from-green-400 to-green-500 text-white px-4 py-2 rounded-full font-semibold shadow hover:scale-105 transition">Get Insurance</a>
-      </nav>
-
-      <!-- Mobile menu button -->
-      <button id="mobileBtn" class="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-700 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <h1>Secure Your Future with <br><span>CareSource Africa</span></h1>
+      <p>Comprehensive insurance solutions across Africa for health, life, home, and business.</p>
+      <a href="#contact" class="btn">Get a Quote</a>
     </div>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700 backdrop-blur-lg shadow-lg transition-all">
-      <div class="flex flex-col text-center py-4 space-y-2">
-        <a href="#home" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Home</a>
-        <a href="#about" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">About</a>
-        <a href="#facilities" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Hospitals</a>
-        <a href="#plans" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Plans</a>
-        <a href="#faq" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">FAQ</a>
-        <a href="#contact" class="py-2 text-lg font-medium hover:text-sky-600 dark:hover:text-sky-400 transition">Contact</a>
-        <a href="#plans" class="mt-3 mx-6 bg-gradient-to-r from-green-400 to-green-500 text-white py-3 rounded-full font-semibold shadow hover:scale-105 transition">Get Insurance</a>
-      </div>
+    <!-- Image Slider Wrapper -->
+    <div class="hero-slider" style="position:relative; width:100%; border-radius:30px; overflow:hidden;">
+      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1766968772/WhatsApp_Image_2025-12-29_at_03.38.47_1_rymuak.jpg" class="slide" style="width:100%; border-radius:30px;">
+      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1766968772/WhatsApp_Image_2025-12-29_at_03.38.47_xgcef0.jpg" class="slide" style="width:100%; border-radius:30px; position:absolute; top:0; left:0; opacity:0; transition:opacity 1s;">
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section id="home" class="relative flex flex-col md:flex-row items-center justify-center min-h-screen bg-gradient-to-br from-sky-500 to-sky-600 text-white pt-32 px-4 hero-min">
-    <div class="w-full md:w-1/2 h-[60vh] md:h-full relative overflow-hidden rounded-lg shadow-lg">
-      <img src="https://res.cloudinary.com/duwcyaitg/image/upload/v1765410203/care_p91bhh.jpg" alt="Hero" class="w-full h-full object-cover rounded-lg" />
-      <div class="absolute inset-0 bg-black/20 md:hidden"></div>
-    </div>
-    <div class="relative z-10 w-full md:w-1/2 px-6 py-10 md:py-0 text-center md:text-left">
-      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Trusted Health Insurance Across Africa</h1>
-      <p class="text-lg md:text-xl opacity-90 mb-6">Caymis caafimaad casri ah, lagu kalsoonaan karo — Muqdisho.</p>
-      <div class="bg-red-500 p-3 rounded-lg inline-block mb-6 font-bold text-lg">Hurry! Offer ends in: <span id="heroTimer"></span></div>
-      <div class="flex flex-wrap justify-center md:justify-start gap-4">
-        <a href="#plans" class="bg-gradient-to-r from-green-400 to-green-500 px-6 py-3 rounded-full text-white font-semibold shadow hover:scale-105 transition">Get Insurance</a>
-        <button onclick="openRegister()" class="bg-white/90 text-sky-700 px-5 py-3 rounded-full font-semibold hover:scale-105 transition shadow-md">Register</button>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section id="about" class="py-20 bg-gray-50 dark:bg-gray-900">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-      <div data-aos="fade-right">
-        <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-4">Ku saabsan Care Source Africa</h2>
-        <p class="text-gray-700 dark:text-gray-300 mb-3">Shirkad Soomaaliyeed oo bixisa caymis caafimaad oo la awoodi karo.</p>
-        <p class="text-gray-700 dark:text-gray-300">La shaqeynta isbitaallo iyo xarumo caafimaad oo casri ah oo bixiya adeegyo heer caalami.</p>
-      </div>
-      <div data-aos="fade-left">
-        <img src="https://images.unsplash.com/photo-1513224502586-d1e602410265?auto=format&fit=crop&q=80&w=900" alt="Hospital" class="rounded-2xl shadow-lg w-full object-cover" />
-      </div>
-    </div>
-  </section>
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
 
-  <!-- FACILITIES -->
-  <section id="facilities" class="py-20 bg-white dark:bg-gray-800">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-sky-700 mb-12" data-aos="fade-up">Isbitaallada & Qalabka Casriga ah</h2>
-      <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in">
-          <img src="https://plus.unsplash.com/premium_photo-1682130157004-057c137d96d5?w=500&auto=format&fit=crop&q=60" alt="MRI" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">MRI & Scanning Technology</h3>
-          <p class="text-gray-600 dark:text-gray-300">Qalab casri ah oo lagu ogaanayo cudurada gudaha jirka.</p>
-        </div>
-        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="120">
-          <img src="https://images.unsplash.com/photo-1563233269-7e86880558a7?w=500&auto=format&fit=crop&q=60" alt="Hospital" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">Isbitaallo Casri ah</h3>
-          <p class="text-gray-600 dark:text-gray-300">Xarumaha caafimaad ee aan la shaqeyno waxay bixiyaan adeegyo heer caalami.</p>
-        </div>
-        <div class="bg-white dark:bg-gray-900 rounded-2xl p-6 shadow card-hover" data-aos="zoom-in" data-aos-delay="240">
-          <img src="https://plus.unsplash.com/premium_photo-1663050790540-223dad060419?w=500&auto=format&fit=crop&q=60" alt="Lab" class="rounded-xl mb-4 h-56 w-full object-cover" />
-          <h3 class="text-xl font-semibold text-sky-700 mb-2">Qalab Shaybaar Casri ah</h3>
-          <p class="text-gray-600 dark:text-gray-300">Shaybaaro tiknoolaji sare leh oo lagu baaro caafimaadka bukaanka.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  setInterval(() => {
+    slides[current].style.opacity = 0; // hide current
+    current = (current + 1) % slides.length; // next slide
+    slides[current].style.opacity = 1; // show next
+  }, 4000); // change every 4s
+</script>
 
-  <!-- PLANS -->
-  <section id="plans" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center text-sky-700 mb-10" data-aos="fade-up">Qorshayaasha Caymiska</h2>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-2xl shadow card-hover border border-gray-200" data-aos="flip-left">
-          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Darawalada Bajaaj</h3>
-          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$15</span> bishii</p>
-          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-            <li>✔ Daryeel Degdeg ah</li>
-            <li>✔ Daawaynta shilalka</li>
-            <li>✖ Ilkaha & Aragga</li>
-          </ul>
-          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-sky-600 card-hover" data-aos="flip-left" data-aos-delay="120">
-          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Qoyska</h3>
-          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$20</span> bishii</p>
-          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-            <li>✔ Daryeelka Qoyska oo Dhameystiran</li>
-            <li>✔ Ilkaha & Aragga</li>
-            <li>✔ Baaritaan Sannadle ah</li>
-          </ul>
-          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-        </div>
-        <div class="bg-white p-6 rounded-2xl shadow card-hover" data-aos="flip-left" data-aos-delay="240">
-          <h3 class="text-xl font-semibold mb-2 text-center text-sky-700">Qorshaha Heerka Sare</h3>
-          <p class="text-center text-gray-600 mb-4">Laga bilaabo <span class="font-bold text-sky-600">$75</span> bishii</p>
-          <ul class="text-gray-600 mb-4 space-y-2 text-sm">
-            <li>✔ Caymiska Caafimaadka oo Dhameystiran</li>
-            <li>✔ Faa’iidooyinka Qoyska</li>
-            <li>✔ Helitaan Caalami ah</li>
-          </ul>
-          <a href="#" class="block text-center bg-sky-600 text-white py-2 rounded-lg">Doora Qorshahan</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="py-20 bg-white">
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8">
-      <div data-aos="fade-right">
-        <h2 class="text-3xl font-bold text-sky-700 mb-4">Nala Soo Xiriir</h2>
-        <p class="text-gray-600 mb-6">Kooxdayadu waxay diyaar u yihiin inay kaa caawiyaan diiwaangelinta, sheegashada, iyo wixii kale ee la xiriira caymiska.</p>
-        <div class="grid gap-4">
-          <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
-            <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M3 8v8a2 2 0 002 2h14a2 2 0 002-2V8" />
-            </svg>
-            <div><div class="font-semibold">info@caresourceafrica.com</div><div class="text-sm text-gray-500">Email Support 24/7</div></div>
-          </div>
-          <div class="bg-white rounded-3xl p-6 shadow flex items-start gap-4">
-            <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5h2l.4 2M7 7h10l1 9H6L7 7zm0 0L5.6 5.2M16 3h2a1 1 0 011 1v2" />
-            </svg>
-            <div><div class="font-semibold">+252612194449</div><div class="text-sm text-gray-500">Call or WhatsApp</div></div>
-          </div>
-        </div>
-      </div>
-      <div data-aos="fade-left">
-        <form id="contactForm" class="bg-white rounded-3xl p-8 shadow" novalidate>
-          <h3 class="text-xl font-bold mb-4">Fariin noogu soo dir</h3>
-          <div class="grid md:grid-cols-2 gap-3">
-            <input name="name" required placeholder="Magacaaga" class="p-3 border rounded" />
-            <input name="email" type="email" required placeholder="Email-kaaga" class="p-3 border rounded" />
-            <input name="phone" placeholder="Number" class="p-3 border rounded" />
-            <input name="subject" placeholder="Subject" class="p-3 border rounded" />
-            <textarea name="message" placeholder="Fariintaada" class="md:col-span-2 p-3 border rounded h-36"></textarea>
-          </div>
-          <div class="mt-4 flex gap-2 justify-end">
-            <button type="reset" class="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300 transition">Clear</button>
-            <button type="submit" class="px-4 py-2 rounded bg-sky-600 text-white hover:bg-sky-700 transition">Send</button>
-          </div>
-        </form>
-      </div>
+<!-- ABOUT -->
+<section id="about" style="background:#f0f9ff;">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:60px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:300px;">
+      <h2 style="font-size:40px; color:var(--dark); margin-bottom:20px; font-weight:700; line-height:1.2;">About <span style="color:var(--accent);">CareSource Africa</span></h2>
+      <p style="font-size:18px; color:var(--text); margin-bottom:20px;">We provide trusted insurance solutions that protect individuals, families, and businesses across Africa, delivering peace of mind and security.</p>
+      <a href="#contact" class="btn" style="padding:16px 40px;">Contact Us</a>
     </div>
-  </section>
+    <div style="flex:1; min-width:300px;">
+      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:25px; box-shadow:0 25px 50px rgba(0,0,0,0.15); transition:.4s;">
+<iframe width="1364" height="767" src="https://www.youtube.com/embed/hcMDaMhJanM" title="How insurance premiums and deductibles work" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="bg-gray-800 text-gray-200 py-10">
-    <div class="max-w-6xl mx-auto px-6 text-center md:text-left grid md:grid-cols-3 gap-6">
-      <div>
-        <h4 class="font-bold mb-2">Care Source Africa</h4>
-        <p class="text-gray-400 text-sm">Caymis caafimaad oo lagu kalsoonaan karo oo ka shaqeeya guud ahaan Afrika.</p>
+<!-- SERVICES -->
+<section id="services" style="padding:120px 0; background:#f5f7ff;">
+  <div class="container">
+    <h2 style="font-size:42px; font-weight:800; text-align:center; color:var(--dark); margin-bottom:15px;">Our <span style="color:var(--accent);">Services</span></h2>
+    <div class="grid">
+      <div class="card-modern"><div class="icon"><i class="fa-solid fa-heart"></i></div><h3>Health Insurance</h3><p>Comprehensive coverage for you and your family.</p></div>
+      <div class="card-modern"><div class="icon"><i class="fa-solid fa-house"></i></div><h3>Home Insurance</h3><p>Protect your property and assets from unforeseen risks.</p></div>
+      <div class="card-modern"><div class="icon"><i class="fa-solid fa-briefcase"></i></div><h3>Business Insurance</h3><p>Secure your business with tailored insurance plans.</p></div>
+      <div class="card-modern"><div class="icon"><i class="fa-solid fa-shield-halved"></i></div><h3>Life Insurance</h3><p>Ensure your loved ones are protected for the future.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COVERAGE AREAS -->
+<section id="coverage-areas" style="padding:120px 0; background:#fff;">
+  <div class="container">
+    <h2 style="font-size:42px; font-weight:800; text-align:center; color:var(--dark); margin-bottom:15px;">
+      Coverage <span style="color:var(--accent);">Areas</span>
+    </h2>
+    <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:40px;">
+
+      <!-- Hospitals & Clinics -->
+      <div class="card-modern">
+        <div class="icon"><i class="fa-solid fa-hospital"></i></div>
+        <h3>Hospitals & Clinics</h3>
+        <p>Comprehensive insurance solutions for health institutions and medical facilities.</p>
       </div>
-      <div>
-        <h4 class="font-bold mb-2">Quick Links</h4>
-        <ul class="space-y-1 text-gray-400 text-sm">
-          <li><a href="#about" class="hover:text-white transition">About</a></li>
-          <li><a href="#plans" class="hover:text-white transition">Plans</a></li>
-          <li><a href="#contact" class="hover:text-white transition">Contact</a></li>
+
+      <!-- Individuals -->
+      <div class="card-modern">
+        <div class="icon"><i class="fa-solid fa-user"></i></div>
+        <h3>Individuals</h3>
+        <p>Affordable medical coverage for personal health and outpatient services.</p>
+      </div>
+
+      <!-- Families -->
+      <div class="card-modern">
+        <div class="icon"><i class="fa-solid fa-users"></i></div>
+        <h3>Families</h3>
+        <p>Family health plans covering hospitalization, specialist visits, and wellness programs.</p>
+      </div>
+
+      <!-- Community Health Programs -->
+      <div class="card-modern">
+        <div class="icon"><i class="fa-solid fa-hand-holding-medical"></i></div>
+        <h3>Community Health</h3>
+        <p>Support for preventive care, vaccination drives, and wellness initiatives.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- PRICING -->
+<section id="pricing" style="padding:120px 0; background:#f0f9ff;">
+  <div class="container">
+    <h2 style="font-size:42px; font-weight:800; text-align:center; color:var(--dark); margin-bottom:15px;">
+      Insurance <span style="color:var(--accent);">Plans</span>
+    </h2>
+    <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:40px;">
+
+      <!-- Silver Plan -->
+      <div class="card-modern" style="border-top:5px solid #c0c0c0;">
+        <h3>Silver</h3>
+        <p class="price" style="font-size:32px; font-weight:700; color:#c0c0c0;">$180/year</p>
+        <ul style="list-style:none; padding:0; margin-bottom:20px;">
+          <li>✔ Outpatient Consultations</li>
+          <li>✔ Basic Lab & Diagnostic Tests</li>
+          <li>✔ Telemedicine Support</li>
+          <li>✔ Prescription Medications</li>
+          <li>✔ Annual Health Check-up</li>
         </ul>
+        <a href="#contact" class="btn" style="background:#c0c0c0; color:#0f172a;">Get Started</a>
       </div>
-      <div>
-        <h4 class="font-bold mb-2">Contact</h4>
-        <p class="text-gray-400 text-sm">Email: info@caresourceafrica.com</p>
-        <p class="text-gray-400 text-sm">Phone: +252612194449</p>
+
+      <!-- Gold Plan -->
+      <div class="card-modern" style="border-top:5px solid #f59e0b;">
+        <h3>Gold</h3>
+        <p class="price" style="font-size:32px; font-weight:700; color:#f59e0b;">$240/year</p>
+        <ul style="list-style:none; padding:0; margin-bottom:20px;">
+          <li>✔ Comprehensive Outpatient Coverage</li>
+          <li>✔ Specialist Consultations</li>
+          <li>✔ Hospitalization (Limited)</li>
+          <li>✔ Lab & Diagnostic Tests</li>
+          <li>✔ Prescription Medications</li>
+          <li>✔ Telemedicine 24/7</li>
+          <li>✔ Preventive Health Programs</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:#f59e0b; color:#0f172a;">Get Started</a>
       </div>
+
+      <!-- Platinum Plan -->
+      <div class="card-modern" style="border-top:5px solid #8e44ad;">
+        <h3>Platinum <i class="fa-solid fa-users" style="color:#8e44ad; margin-left:10px;"></i></h3>
+        <p class="price" style="font-size:32px; font-weight:700; color:#8e44ad;">$540/year</p>
+        <ul style="list-style:none; padding:0; margin-bottom:20px;">
+          <li>✔ Full Family Coverage</li>
+          <li>✔ Hospitalization & Surgery</li>
+          <li>✔ Specialist Consultations & Referrals</li>
+          <li>✔ Advanced Lab & Diagnostic Tests</li>
+          <li>✔ Prescription Medications</li>
+          <li>✔ 24/7 Telemedicine</li>
+          <li>✔ Preventive & Wellness Programs</li>
+          <li>✔ Maternity & Newborn Coverage</li>
+          <li><i class="fa-solid fa-user-friends" style="color:#8e44ad;"></i> Ideal for Families</li>
+        </ul>
+        <a href="#contact" class="btn" style="background:#8e44ad; color:#fff;">Contact Us</a>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <!-- Floating WhatsApp & Call Buttons -->
-    <div class="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
-      <a href="https://wa.me/252612194449" target="_blank" class="bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M.057 24l1.687-6.163a11.91 11.91 0 01-1.587-5.945C.157 5.328 5.48 0 12.026 0 18.574 0 23.9 5.328 23.9 11.892c0 6.563-5.326 11.891-11.874 11.891a11.91 11.91 0 01-6.114-1.667L.057 24zm6.597-3.666c1.74.995 3.258 1.591 5.386 1.593 5.462 0 9.928-4.462 9.928-9.946 0-5.481-4.465-9.944-9.927-9.944-5.462 0-9.928 4.462-9.928 9.945 0 2.205.72 3.781 1.566 5.59l-.999 3.64 3.606-.955zm11.387-5.464c-.197-.099-1.168-.577-1.35-.644-.182-.066-.314-.099-.446.1-.131.197-.505.644-.618.774-.113.131-.226.147-.423.049-.197-.099-.832-.307-1.585-.978-.585-.52-.98-1.162-1.096-1.36-.115-.197-.012-.304.087-.403.089-.088.197-.226.296-.34.099-.113.132-.197.198-.33.066-.131.033-.246-.016-.344-.049-.099-.446-1.074-.611-1.47-.161-.386-.326-.334-.446-.34l-.38-.006c-.131 0-.344.05-.524.246-.182.197-.692.675-.692 1.643s.71 1.905.809 2.037c.099.132 1.398 2.134 3.395 2.994.475.205.844.327 1.133.419.476.151.909.13 1.252.079.381-.056 1.168-.477 1.333-.937.164-.459.164-.854.115-.937-.049-.083-.182-.131-.38-.23z"/>
-        </svg>
-      </a>
-      <a href="tel:+252612194449" class="bg-blue-500 hover:bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.09 3.272a1 1 0 01-.217 1.05l-2.2 2.2a16 16 0 006.585 6.585l2.2-2.2a1 1 0 011.05-.217l3.272 1.09a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C6.477 21 3 17.523 3 13V5z"/>
-        </svg>
-      </a>
+<!-- WHY CHOOSE US SECTION -->
+<section id="features" style="padding:120px 0; background:var(--light);">
+  <div class="container">
+    <h2 style="font-size:42px; font-weight:800; text-align:center; color:var(--dark); margin-bottom:20px;">
+      Why Choose <span style="color:var(--primary);">CareSource Africa</span>
+    </h2>
+    <p style="text-align:center; color:#64748b; font-size:18px; max-width:800px; margin:0 auto 60px;">
+      Discover why thousands trust CareSource Africa Insurance to secure their health and assets.
+    </p>
+
+    <div class="grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:40px;">
+
+      <!-- Feature 1 -->
+      <div class="feature-card" style="background:#fff; padding:35px 25px; border-radius:25px; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.08); transition:transform .4s;">
+        <div class="icon" style="font-size:40px; color:var(--primary); margin-bottom:20px;">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; color:var(--dark); margin-bottom:15px;">Reliable Coverage</h3>
+        <p style="color:#334155; font-size:16px; line-height:1.6;">
+          Comprehensive insurance plans tailored to your needs, giving you peace of mind.
+        </p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card" style="background:#fff; padding:35px 25px; border-radius:25px; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.08); transition:transform .4s;">
+        <div class="icon" style="font-size:40px; color:var(--secondary); margin-bottom:20px;">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; color:var(--dark); margin-bottom:15px;">Trusted Service</h3>
+        <p style="color:#334155; font-size:16px; line-height:1.6;">
+          Experienced team providing prompt, professional, and transparent service.
+        </p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card" style="background:#fff; padding:35px 25px; border-radius:25px; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.08); transition:transform .4s;">
+        <div class="icon" style="font-size:40px; color:var(--accent); margin-bottom:20px;">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; color:var(--dark); margin-bottom:15px;">Affordable Plans</h3>
+        <p style="color:#334155; font-size:16px; line-height:1.6;">
+          Flexible pricing options for individuals and businesses without compromising coverage.
+        </p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="feature-card" style="background:#fff; padding:35px 25px; border-radius:25px; text-align:center; box-shadow:0 25px 50px rgba(0,0,0,0.08); transition:transform .4s;">
+        <div class="icon" style="font-size:40px; color:var(--primary); margin-bottom:20px;">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <h3 style="font-size:22px; font-weight:700; color:var(--dark); margin-bottom:15px;">24/7 Support</h3>
+        <p style="color:#334155; font-size:16px; line-height:1.6;">
+          Always available to answer queries and assist with claims for our clients.
+        </p>
+      </div>
+
     </div>
+  </div>
+</section>
 
-    <div class="mt-6 text-center text-gray-500 text-sm">&copy; 2025 Care Source Africa. All rights reserved.</div>
-  </footer>
+<!-- Feature Card Hover Animation -->
+<style>
+.feature-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+}
+@media(max-width:900px){
+  .grid {
+    grid-template-columns:1fr;
+    gap:30px;
+  }
+}
+</style>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
+<!-- TESTIMONIALS -->
+<section id="testimonials" style="padding:120px 0; background:linear-gradient(135deg,#f0f9ff,#dbeafe);">
+  <div class="container">
+    <h2 style="font-size:42px; font-weight:800; text-align:center; color:var(--dark); margin-bottom:15px;">Client <span style="color:var(--accent);">Testimonials</span></h2>
+    <div class="grid">
+      <div class="card-modern">
+  <img src="https://i.pravatar.cc/100?img=10" class="client-img" alt="Ali Cabdi">
+  <p>“CareSource Africa waxay na siisay kalsooni iyo daryeel caafimaad oo la isku halayn karo.”</p>
+  <h4>Ali Cabdi</h4>
+</div>
 
-    // Mobile menu toggle using hidden class
-    const mobileBtn = document.getElementById('mobileBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    // Close mobile menu on link click
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+<div class="card-modern">
+  <img src="https://i.pravatar.cc/100?img=11" class="client-img" alt="Hodan Warsame">
+  <p>“Adeeg xirfadeed oo lagu kalsoonaan karo laga bilaabo bilow ilaa dhamaad.”</p>
+  <h4>Hodan Warsame</h4>
+</div>
 
-    // Hero timer countdown
-    const heroTimer = document.getElementById('heroTimer');
-    const offerEnd = new Date();
-    offerEnd.setHours(offerEnd.getHours() + 24);
-    setInterval(() => {
-      const now = new Date();
-      const diff = offerEnd - now;
-      const hours = Math.floor(diff / (1000*60*60));
-      const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
-      const seconds = Math.floor((diff % (1000*60)) / 1000);
-      heroTimer.textContent = `${hours}h ${minutes}m ${seconds}s`;
-    }, 1000);
 
-    // Placeholder register function
-    function openRegister(){ alert("Register form will open here!"); }
-  </script>
 
+      <div class="card-modern"><img src="https://i.pravatar.cc/100?img=3" class="client-img"><p>“Excellent customer service and comprehensive plans.”</p><h4>Michael Lee</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:100px 0; background:#fff;">
+  <div class="container contact-grid">
+    <div>
+      <h2 style="font-size:40px; color:var(--dark); margin-bottom:25px;">Contact <span style="color:var(--accent);">Us</span></h2>
+      <p style="font-size:18px; color:var(--text); margin-bottom:20px;">Get in touch with our team for quotes or support.</p>
+      <ul style="list-style:none; padding:0; font-size:16px; color:var(--text); line-height:2;">
+        <li>📞 +254798883849</li>
+        <li>📧 info@caresourceafrica.com</li>
+        <li>🌍 Mogadisho, Somalia</li>
+      </ul>
+      <a href="https://wa.me/254717361424" style="display:inline-block; margin-top:25px; padding:16px 40px; border-radius:50px; font-weight:700; background:var(--accent); color:var(--dark);">Chat on WhatsApp</a>
+    </div>
+    <div style="background:#f0f9ff; padding:40px; border-radius:25px; box-shadow:0 25px 50px rgba(0,0,0,0.08);">
+      <form id="contactForm" style="display:flex; flex-direction:column; gap:25px;">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 CareSource Africa Insurance. All rights reserved.
+</footer>
+
+<!-- WhatsApp Button -->
+<a href="https://wa.me/254798883849" class="whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+
+<!-- JS -->
+<script>
+const hamburger=document.querySelector('.hamburger');
+const navLinks=document.querySelector('.nav-links');
+hamburger.addEventListener('click',()=>{
+  navLinks.classList.toggle('active');
+  hamburger.classList.toggle('toggle');
+});
+document.querySelectorAll('.nav-links li a').forEach(item=>{
+  item.addEventListener('click',()=>{
+    navLinks.classList.remove('active');
+    hamburger.classList.remove('toggle');
+  });
+});
+
+// Contact form alert
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  alert('✅ Message sent successfully!');
+  this.reset();
+});
+</script>
 </body>
 </html>
